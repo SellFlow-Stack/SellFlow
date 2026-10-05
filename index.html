@@ -46,6 +46,11 @@
       cursor: pointer;
     }
 
+    button:disabled {
+      opacity: .65;
+      cursor: not-allowed;
+    }
+
     a {
       color: inherit;
       text-decoration: none;
@@ -677,6 +682,14 @@
       .auth-card {
         padding: 25px;
       }
+
+      .payment-link {
+        flex-direction: column;
+      }
+
+      .payment-link input {
+        min-height: 46px;
+      }
     }
 
     @media (max-width: 430px) {
@@ -731,7 +744,13 @@
 
         <div class="field">
           <label for="password">Password</label>
-          <input id="password" type="password" minlength="6" autocomplete="current-password" required />
+          <input
+            id="password"
+            type="password"
+            minlength="6"
+            autocomplete="current-password"
+            required
+          />
         </div>
 
         <button id="authSubmit" class="primary-btn full" type="submit">
@@ -824,8 +843,11 @@
             <div class="panel">
               <div class="panel-head">
                 <span class="panel-title">Sales overview</span>
-                <span style="font-size:12px;color:var(--muted);">Last 7 days</span>
+                <span style="font-size:12px;color:var(--muted);">
+                  Last 7 days
+                </span>
               </div>
+
               <div id="salesChart" class="chart">
                 <div class="chart-empty">No sales yet</div>
               </div>
@@ -846,7 +868,7 @@
                 </div>
 
                 <div class="quick-action" data-go="orders">
-                  <div class="quick-icon">↗</div>
+                  <div class="quick-icon">↗️</div>
                   <div>
                     <strong>View orders</strong>
                     <span>Manage your customer orders</span>
@@ -867,8 +889,16 @@
           <div class="panel" style="margin-top:18px;">
             <div class="panel-head">
               <span class="panel-title">Recent orders</span>
-              <button class="secondary-btn" data-go="orders" type="button">View all</button>
+
+              <button
+                class="secondary-btn"
+                data-go="orders"
+                type="button"
+              >
+                View all
+              </button>
             </div>
+
             <div id="recentOrders"></div>
           </div>
         </section>
@@ -881,7 +911,11 @@
               <p>View and manage every order created through SellFlow.</p>
             </div>
 
-            <button class="primary-btn" data-go="create-order" type="button">
+            <button
+              class="primary-btn"
+              data-go="create-order"
+              type="button"
+            >
               + Create order
             </button>
           </div>
@@ -902,6 +936,7 @@
 
           <div class="panel form-card">
             <form id="orderForm">
+
               <div class="form-grid">
 
                 <div class="field">
@@ -911,7 +946,11 @@
 
                 <div class="field">
                   <label for="customerEmail">Customer email</label>
-                  <input id="customerEmail" type="email" required />
+                  <input
+                    id="customerEmail"
+                    type="email"
+                    required
+                  />
                 </div>
 
                 <div class="field">
@@ -926,12 +965,21 @@
 
                 <div class="field">
                   <label for="amount">Amount (₦)</label>
-                  <input id="amount" type="number" min="1" step="0.01" required />
+                  <input
+                    id="amount"
+                    type="number"
+                    min="1"
+                    step="0.01"
+                    required
+                  />
                 </div>
 
                 <div class="field wide">
                   <label for="orderNote">Order note</label>
-                  <input id="orderNote" placeholder="Optional internal note" />
+                  <input
+                    id="orderNote"
+                    placeholder="Optional internal note"
+                  />
                 </div>
 
               </div>
@@ -939,14 +987,23 @@
               <div id="orderMessage" class="hidden"></div>
 
               <div class="form-actions">
-                <button class="secondary-btn" data-go="orders" type="button">
+                <button
+                  class="secondary-btn"
+                  data-go="orders"
+                  type="button"
+                >
                   Cancel
                 </button>
 
-                <button id="createOrderBtn" class="primary-btn" type="submit">
+                <button
+                  id="createOrderBtn"
+                  class="primary-btn"
+                  type="submit"
+                >
                   Create order
                 </button>
               </div>
+
             </form>
           </div>
         </section>
@@ -954,50 +1011,94 @@
         <!-- PAYMENT CREATED -->
         <section id="page-payment-link" class="page hidden">
           <div class="panel success-box">
+
             <div class="success-icon">✓</div>
 
-            <h1 style="margin:0 0 8px;">Order created</h1>
+            <h1 style="margin:0 0 8px;">
+              Order created
+            </h1>
 
             <p style="color:var(--muted);line-height:1.6;">
-              Your order is ready. Start the secure Paystack checkout or copy
-              the generated payment link.
+              Your order is ready. Start the secure Paystack checkout
+              or copy the generated payment link.
             </p>
 
             <div id="paymentOrderInfo" style="margin:25px 0;"></div>
 
             <div class="payment-link">
               <input id="paymentLinkInput" readonly />
-              <button id="copyPaymentBtn" class="secondary-btn" type="button">
+
+              <button
+                id="copyPaymentBtn"
+                class="secondary-btn"
+                type="button"
+              >
                 Copy
               </button>
             </div>
 
-            <div style="display:flex;gap:10px;justify-content:center;margin-top:18px;flex-wrap:wrap;">
-              <button id="payNowBtn" class="primary-btn" type="button">
+            <div
+              style="
+                display:flex;
+                gap:10px;
+                justify-content:center;
+                margin-top:18px;
+                flex-wrap:wrap;
+              "
+            >
+              <button
+                id="payNowBtn"
+                class="primary-btn"
+                type="button"
+              >
                 Open Paystack
               </button>
 
-              <button class="secondary-btn" data-go="dashboard" type="button">
+              <button
+                class="secondary-btn"
+                data-go="dashboard"
+                type="button"
+              >
                 Back to dashboard
               </button>
             </div>
+
           </div>
         </section>
 
         <!-- PAYMENT STATUS -->
         <section id="page-payment-status" class="page hidden">
           <div class="panel success-box">
-            <div id="statusIcon" class="success-icon">✓</div>
-            <h1 id="statusTitle" style="margin:0 0 8px;">Payment status</h1>
-            <p id="statusText" style="color:var(--muted);line-height:1.6;"></p>
 
-            <div id="statusDetails" style="margin-top:24px;"></div>
+            <div id="statusIcon" class="success-icon">✓</div>
+
+            <h1
+              id="statusTitle"
+              style="margin:0 0 8px;"
+            >
+              Payment status
+            </h1>
+
+            <p
+              id="statusText"
+              style="color:var(--muted);line-height:1.6;"
+            ></p>
+
+            <div
+              id="statusDetails"
+              style="margin-top:24px;"
+            ></div>
 
             <div style="margin-top:22px;">
-              <button class="primary-btn" data-go="dashboard" type="button">
+              <button
+                class="primary-btn"
+                data-go="dashboard"
+                type="button"
+              >
                 Return to dashboard
               </button>
             </div>
+
           </div>
         </section>
 
@@ -1006,11 +1107,14 @@
           <div class="page-head">
             <div>
               <h1>Sales report</h1>
-              <p>Understand your sales performance from your real orders.</p>
+              <p>
+                Understand your sales performance from your real orders.
+              </p>
             </div>
           </div>
 
           <div class="stats">
+
             <div class="stat-card">
               <div class="stat-label">Paid revenue</div>
               <div id="reportRevenue" class="stat-value">₦0</div>
@@ -1030,14 +1134,20 @@
               <div class="stat-label">Pending value</div>
               <div id="reportPending" class="stat-value">₦0</div>
             </div>
+
           </div>
 
           <div class="panel" style="margin-top:18px;">
             <div class="panel-head">
-              <span class="panel-title">Revenue by recent day</span>
+              <span class="panel-title">
+                Revenue by recent day
+              </span>
             </div>
+
             <div id="reportChart" class="chart">
-              <div class="chart-empty">No paid sales yet</div>
+              <div class="chart-empty">
+                No paid sales yet
+              </div>
             </div>
           </div>
         </section>
@@ -1047,33 +1157,48 @@
           <div class="page-head">
             <div>
               <h1>Profile</h1>
-              <p>Manage your SellFlow seller information.</p>
+              <p>
+                Manage your SellFlow seller information.
+              </p>
             </div>
           </div>
 
           <div class="panel form-card">
+
             <form id="profileForm">
+
               <div class="field">
-                <label for="profileBusiness">Business name</label>
+                <label for="profileBusiness">
+                  Business name
+                </label>
                 <input id="profileBusiness" />
               </div>
 
               <div class="field">
-                <label for="profileFullName">Full name</label>
+                <label for="profileFullName">
+                  Full name
+                </label>
                 <input id="profileFullName" />
               </div>
 
               <div class="field">
-                <label for="profilePhone">Phone number</label>
+                <label for="profilePhone">
+                  Phone number
+                </label>
                 <input id="profilePhone" />
               </div>
 
               <div id="profileMessage" class="hidden"></div>
 
-              <button class="primary-btn" type="submit">
+              <button
+                class="primary-btn"
+                type="submit"
+              >
                 Save changes
               </button>
+
             </form>
+
           </div>
         </section>
 
@@ -1086,14 +1211,18 @@
        SELLFLOW CONFIG
        ========================================================== */
 
-    const SUPABASE_URL = "https://nnkurlmqaytywiayjazq.supabase.co";
+    const SUPABASE_URL =
+      "https://nnkurlmqaytywiayjazq.supabase.co";
 
     /*
-      This is the browser-safe publishable key.
-      Never put a Supabase service_role/secret key here.
+      Browser-safe publishable key.
+      NEVER put a Supabase service_role/secret key here.
     */
     const SUPABASE_PUBLISHABLE_KEY =
       "sb_publishable_1AWzTkjd1tqloKJN3XonGQ_p8zDb3B8";
+
+    const SELLFLOW_URL =
+      "https://sellflow-stack.github.io/SellFlow/";
 
     const { createClient } = window.supabase;
 
@@ -1165,9 +1294,33 @@
       element.textContent = "";
     }
 
-    function setButtonLoading(button, loading, normalText) {
+    function setButtonLoading(
+      button,
+      loading,
+      normalText
+    ) {
       button.disabled = loading;
-      button.textContent = loading ? "Please wait..." : normalText;
+      button.textContent =
+        loading ? "Please wait..." : normalText;
+    }
+
+    function clearPaymentQuery() {
+      try {
+        const cleanUrl =
+          window.location.origin +
+          window.location.pathname;
+
+        window.history.replaceState(
+          {},
+          document.title,
+          cleanUrl
+        );
+      } catch (error) {
+        console.warn(
+          "Could not clean payment URL:",
+          error
+        );
+      }
     }
 
     /* ==========================================================
@@ -1187,7 +1340,10 @@
         ? "Accept payments, manage orders and track your sales in one place."
         : "Log in to manage your orders and sales.";
 
-      $("signupFields").classList.toggle("hidden", !signup);
+      $("signupFields").classList.toggle(
+        "hidden",
+        !signup
+      );
 
       $("authSubmit").textContent = signup
         ? "Create SellFlow account"
@@ -1204,123 +1360,196 @@
       hideMessage($("authMessage"));
     }
 
-    $("authSwitch").addEventListener("click", () => {
-      setAuthMode(authMode === "signup" ? "login" : "signup");
-    });
-
-    $("authForm").addEventListener("submit", async (event) => {
-      event.preventDefault();
-
-      const email = $("email").value.trim();
-      const password = $("password").value;
-
-      hideMessage($("authMessage"));
-
-      if (!email || !password) {
-        showMessage($("authMessage"), "Enter your email and password.");
-        return;
-      }
-
-      const button = $("authSubmit");
-      setButtonLoading(
-        button,
-        true,
-        authMode === "signup"
-          ? "Create SellFlow account"
-          : "Log in"
-      );
-
-      try {
-        if (authMode === "signup") {
-          const fullName = $("fullName").value.trim();
-          const businessName = $("businessName").value.trim();
-          const phone = $("phone").value.trim();
-
-          if (!fullName || !businessName) {
-            throw new Error("Enter your name and business name.");
-          }
-
-          const redirectUrl = window.location.origin + window.location.pathname;
-
-          const { data, error } =
-            await supabaseClient.auth.signUp({
-              email,
-              password,
-              options: {
-                emailRedirectTo: redirectUrl,
-                data: {
-                  full_name: fullName,
-                  business_name: businessName,
-                  phone
-                }
-              }
-            });
-
-          if (error) throw error;
-
-          if (data.session) {
-            await loadApp();
-          } else {
-            showMessage(
-              $("authMessage"),
-              "Account created. Check your email to confirm your SellFlow account.",
-              "success"
-            );
-          }
-        } else {
-          const { error } =
-            await supabaseClient.auth.signInWithPassword({
-              email,
-              password
-            });
-
-          if (error) throw error;
-
-          await loadApp();
-        }
-      } catch (error) {
-        console.error(error);
-        showMessage(
-          $("authMessage"),
-          error.message || "Authentication failed."
+    $("authSwitch").addEventListener(
+      "click",
+      () => {
+        setAuthMode(
+          authMode === "signup"
+            ? "login"
+            : "signup"
         );
-      } finally {
+      }
+    );
+
+    $("authForm").addEventListener(
+      "submit",
+      async (event) => {
+        event.preventDefault();
+
+        const email =
+          $("email").value.trim();
+
+        const password =
+          $("password").value;
+
+        hideMessage($("authMessage"));
+
+        if (!email || !password) {
+          showMessage(
+            $("authMessage"),
+            "Enter your email and password."
+          );
+
+          return;
+        }
+
+        const button =
+          $("authSubmit");
+
         setButtonLoading(
           button,
-          false,
+          true,
           authMode === "signup"
             ? "Create SellFlow account"
             : "Log in"
         );
+
+        try {
+          if (authMode === "signup") {
+
+            const fullName =
+              $("fullName").value.trim();
+
+            const businessName =
+              $("businessName").value.trim();
+
+            const phone =
+              $("phone").value.trim();
+
+            if (!fullName || !businessName) {
+              throw new Error(
+                "Enter your name and business name."
+              );
+            }
+
+            const redirectUrl =
+              SELLFLOW_URL;
+
+            const {
+              data,
+              error
+            } =
+              await supabaseClient.auth.signUp({
+                email,
+                password,
+
+                options: {
+                  emailRedirectTo:
+                    redirectUrl,
+
+                  data: {
+                    full_name:
+                      fullName,
+
+                    business_name:
+                      businessName,
+
+                    phone
+                  }
+                }
+              });
+
+            if (error) {
+              throw error;
+            }
+
+            if (data.session) {
+
+              await loadApp();
+
+            } else {
+
+              showMessage(
+                $("authMessage"),
+                "Account created. Check your email to confirm your SellFlow account.",
+                "success"
+              );
+            }
+
+          } else {
+
+            const {
+              error
+            } =
+              await supabaseClient.auth
+                .signInWithPassword({
+                  email,
+                  password
+                });
+
+            if (error) {
+              throw error;
+            }
+
+            await loadApp();
+          }
+
+        } catch (error) {
+
+          console.error(error);
+
+          showMessage(
+            $("authMessage"),
+            error.message ||
+              "Authentication failed."
+          );
+
+        } finally {
+
+          setButtonLoading(
+            button,
+            false,
+            authMode === "signup"
+              ? "Create SellFlow account"
+              : "Log in"
+          );
+        }
       }
-    });
+    );
 
-    $("logoutBtn").addEventListener("click", async () => {
-      await supabaseClient.auth.signOut();
+    $("logoutBtn").addEventListener(
+      "click",
+      async () => {
 
-      currentUser = null;
-      profile = null;
-      orders = [];
+        await supabaseClient.auth.signOut();
 
-      $("appScreen").classList.add("hidden");
-      $("authScreen").classList.remove("hidden");
+        currentUser = null;
+        profile = null;
+        orders = [];
+        currentPaymentOrder = null;
 
-      setAuthMode("login");
-    });
+        $("appScreen")
+          .classList.add("hidden");
+
+        $("authScreen")
+          .classList.remove("hidden");
+
+        setAuthMode("login");
+      }
+    );
 
     /* ==========================================================
        APP LOAD
        ========================================================== */
 
     async function loadApp() {
+
       const {
-        data: { user },
+        data: {
+          user
+        },
         error
-      } = await supabaseClient.auth.getUser();
+      } =
+        await supabaseClient.auth.getUser();
 
       if (error || !user) {
-        $("appScreen").classList.add("hidden");
-        $("authScreen").classList.remove("hidden");
+
+        $("appScreen")
+          .classList.add("hidden");
+
+        $("authScreen")
+          .classList.remove("hidden");
+
         return;
       }
 
@@ -1329,56 +1558,104 @@
       await loadProfile();
       await loadOrders();
 
-      $("authScreen").classList.add("hidden");
-      $("appScreen").classList.remove("hidden");
+      $("authScreen")
+        .classList.add("hidden");
+
+      $("appScreen")
+        .classList.remove("hidden");
 
       updateSidebar();
       renderAll();
 
+      const params =
+        new URLSearchParams(
+          window.location.search
+        );
+
       const paymentReference =
-        new URLSearchParams(window.location.search).get("reference");
+        params.get("reference") ||
+        params.get("trxref");
 
       if (paymentReference) {
-        await handlePaystackCallback(paymentReference);
+
+        await handlePaystackCallback(
+          paymentReference
+        );
       }
     }
 
     async function loadProfile() {
-      const { data, error } =
+
+      const {
+        data,
+        error
+      } =
         await supabaseClient
           .from("profiles")
           .select("*")
-          .eq("id", currentUser.id)
+          .eq(
+            "id",
+            currentUser.id
+          )
           .maybeSingle();
 
       if (error) {
-        console.error("Profile error:", error);
+
+        console.error(
+          "Profile error:",
+          error
+        );
+
         return;
       }
 
-      profile = data || {
-        id: currentUser.id,
-        business_name: "",
-        full_name: "",
-        phone: ""
-      };
+      profile =
+        data || {
+          id: currentUser.id,
+          business_name: "",
+          full_name: "",
+          phone: ""
+        };
 
-      $("profileBusiness").value = profile.business_name || "";
-      $("profileFullName").value = profile.full_name || "";
-      $("profilePhone").value = profile.phone || "";
+      $("profileBusiness").value =
+        profile.business_name || "";
+
+      $("profileFullName").value =
+        profile.full_name || "";
+
+      $("profilePhone").value =
+        profile.phone || "";
     }
 
     async function loadOrders() {
-      const { data, error } =
+
+      const {
+        data,
+        error
+      } =
         await supabaseClient
           .from("orders")
           .select("*")
-          .eq("seller_id", currentUser.id)
-          .order("created_at", { ascending: false });
+          .eq(
+            "seller_id",
+            currentUser.id
+          )
+          .order(
+            "created_at",
+            {
+              ascending: false
+            }
+          );
 
       if (error) {
-        console.error("Orders error:", error);
+
+        console.error(
+          "Orders error:",
+          error
+        );
+
         orders = [];
+
         return;
       }
 
@@ -1400,29 +1677,43 @@
     };
 
     function showPage(page) {
+
       currentPage = page;
 
-      document.querySelectorAll(".page").forEach((element) => {
-        element.classList.add("hidden");
-      });
+      document
+        .querySelectorAll(".page")
+        .forEach((element) => {
+          element.classList.add(
+            "hidden"
+          );
+        });
 
-      const target = $("page-" + page);
+      const target =
+        $("page-" + page);
 
       if (target) {
-        target.classList.remove("hidden");
+        target.classList.remove(
+          "hidden"
+        );
       }
 
       $("topbarTitle").textContent =
-        pageTitles[page] || "SellFlow";
+        pageTitles[page] ||
+        "SellFlow";
 
-      document.querySelectorAll(".nav button").forEach((button) => {
-        button.classList.toggle(
-          "active",
-          button.dataset.page === page
-        );
-      });
+      document
+        .querySelectorAll(".nav button")
+        .forEach((button) => {
 
-      $("sidebar").classList.remove("open");
+          button.classList.toggle(
+            "active",
+            button.dataset.page ===
+              page
+          );
+        });
+
+      $("sidebar")
+        .classList.remove("open");
 
       if (page === "dashboard") {
         renderDashboard();
@@ -1437,75 +1728,150 @@
       }
     }
 
-    document.addEventListener("click", (event) => {
-      const navigation = event.target.closest("[data-go]");
+    document.addEventListener(
+      "click",
+      (event) => {
 
-      if (navigation) {
-        showPage(navigation.dataset.go);
+        const navigation =
+          event.target.closest(
+            "[data-go]"
+          );
+
+        if (navigation) {
+
+          showPage(
+            navigation.dataset.go
+          );
+        }
+
+        const navButton =
+          event.target.closest(
+            ".nav button"
+          );
+
+        if (navButton) {
+
+          showPage(
+            navButton.dataset.page
+          );
+        }
       }
+    );
 
-      const navButton = event.target.closest(".nav button");
-
-      if (navButton) {
-        showPage(navButton.dataset.page);
+    $("topCreateBtn").addEventListener(
+      "click",
+      () => {
+        showPage("create-order");
       }
-    });
+    );
 
-    $("topCreateBtn").addEventListener("click", () => {
-      showPage("create-order");
-    });
-
-    $("mobileMenuBtn").addEventListener("click", () => {
-      $("sidebar").classList.toggle("open");
-    });
+    $("mobileMenuBtn").addEventListener(
+      "click",
+      () => {
+        $("sidebar")
+          .classList.toggle("open");
+      }
+    );
 
     /* ==========================================================
        DASHBOARD
        ========================================================== */
 
     function calculateStats() {
-      const paid = orders.filter(
-        (order) => order.status === "paid"
-      );
 
-      const pending = orders.filter(
-        (order) => order.status === "pending"
-      );
+      const paid =
+        orders.filter(
+          (order) =>
+            order.status === "paid"
+        );
+
+      const pending =
+        orders.filter(
+          (order) =>
+            order.status === "pending"
+        );
 
       return {
-        totalSales: paid.reduce(
-          (sum, order) => sum + Number(order.amount || 0),
-          0
-        ),
-        pendingSales: pending.reduce(
-          (sum, order) => sum + Number(order.amount || 0),
-          0
-        ),
-        totalOrders: orders.length,
-        paidOrders: paid.length
+
+        totalSales:
+          paid.reduce(
+            (sum, order) =>
+              sum +
+              Number(
+                order.amount || 0
+              ),
+            0
+          ),
+
+        pendingSales:
+          pending.reduce(
+            (sum, order) =>
+              sum +
+              Number(
+                order.amount || 0
+              ),
+            0
+          ),
+
+        totalOrders:
+          orders.length,
+
+        paidOrders:
+          paid.length
       };
     }
 
     function renderDashboard() {
-      const stats = calculateStats();
 
-      $("totalSales").textContent = naira(stats.totalSales);
-      $("totalOrders").textContent = stats.totalOrders;
-      $("paidOrders").textContent = stats.paidOrders;
-      $("pendingSales").textContent = naira(stats.pendingSales);
+      const stats =
+        calculateStats();
 
-      renderSalesChart($("salesChart"));
+      $("totalSales").textContent =
+        naira(
+          stats.totalSales
+        );
+
+      $("totalOrders").textContent =
+        stats.totalOrders;
+
+      $("paidOrders").textContent =
+        stats.paidOrders;
+
+      $("pendingSales").textContent =
+        naira(
+          stats.pendingSales
+        );
+
+      renderSalesChart(
+        $("salesChart")
+      );
+
       renderRecentOrders();
     }
 
     function getLastSevenDays() {
+
       const days = [];
 
-      for (let i = 6; i >= 0; i--) {
-        const date = new Date();
+      for (
+        let i = 6;
+        i >= 0;
+        i--
+      ) {
 
-        date.setHours(0, 0, 0, 0);
-        date.setDate(date.getDate() - i);
+        const date =
+          new Date();
+
+        date.setHours(
+          0,
+          0,
+          0,
+          0
+        );
+
+        date.setDate(
+          date.getDate() - i
+        );
 
         days.push(date);
       }
@@ -1514,84 +1880,151 @@
     }
 
     function getDailyPaidTotals() {
-      return getLastSevenDays().map((date) => {
-        const year = date.getFullYear();
-        const month = date.getMonth();
-        const day = date.getDate();
 
-        const total = orders
-          .filter((order) => {
-            if (order.status !== "paid") return false;
+      return getLastSevenDays()
+        .map((date) => {
 
-            const orderDate = new Date(order.paid_at || order.created_at);
+          const year =
+            date.getFullYear();
 
-            return (
-              orderDate.getFullYear() === year &&
-              orderDate.getMonth() === month &&
-              orderDate.getDate() === day
-            );
-          })
-          .reduce(
-            (sum, order) => sum + Number(order.amount || 0),
-            0
-          );
+          const month =
+            date.getMonth();
 
-        return {
-          date,
-          total
-        };
-      });
+          const day =
+            date.getDate();
+
+          const total =
+            orders
+              .filter((order) => {
+
+                if (
+                  order.status !==
+                  "paid"
+                ) {
+                  return false;
+                }
+
+                const orderDate =
+                  new Date(
+                    order.paid_at ||
+                    order.created_at
+                  );
+
+                return (
+                  orderDate.getFullYear() ===
+                    year &&
+
+                  orderDate.getMonth() ===
+                    month &&
+
+                  orderDate.getDate() ===
+                    day
+                );
+              })
+              .reduce(
+                (sum, order) =>
+                  sum +
+                  Number(
+                    order.amount || 0
+                  ),
+                0
+              );
+
+          return {
+            date,
+            total
+          };
+        });
     }
 
-    function renderSalesChart(container) {
-      const data = getDailyPaidTotals();
+    function renderSalesChart(
+      container
+    ) {
 
-      const max = Math.max(
-        ...data.map((item) => item.total),
-        0
-      );
+      const data =
+        getDailyPaidTotals();
+
+      const max =
+        Math.max(
+          ...data.map(
+            (item) =>
+              item.total
+          ),
+          0
+        );
 
       if (!max) {
+
         container.innerHTML =
           '<div class="chart-empty">No paid sales yet</div>';
+
         return;
       }
 
-      container.innerHTML = data.map((item) => {
-        const height =
-          Math.max(
-            3,
-            Math.round((item.total / max) * 100)
-          );
+      container.innerHTML =
+        data
+          .map((item) => {
 
-        const label = new Intl.DateTimeFormat("en-NG", {
-          weekday: "short"
-        }).format(item.date);
+            const height =
+              Math.max(
+                3,
+                Math.round(
+                  (item.total /
+                    max) *
+                    100
+                )
+              );
 
-        return `
-          <div class="bar-wrap" title="${escapeHtml(
-            naira(item.total)
-          )}">
-            <div
-              class="bar"
-              style="height:${height}%"
-              aria-label="${escapeHtml(label)} ${escapeHtml(
-                naira(item.total)
-              )}"
-            ></div>
-          </div>
-        `;
-      }).join("");
+            const label =
+              new Intl.DateTimeFormat(
+                "en-NG",
+                {
+                  weekday:
+                    "short"
+                }
+              ).format(
+                item.date
+              );
+
+            return `
+              <div
+                class="bar-wrap"
+                title="${escapeHtml(
+                  naira(
+                    item.total
+                  )
+                )}"
+              >
+                <div
+                  class="bar"
+                  style="height:${height}%"
+                  aria-label="${escapeHtml(
+                    label
+                  )} ${escapeHtml(
+                    naira(
+                      item.total
+                    )
+                  )}"
+                ></div>
+              </div>
+            `;
+          })
+          .join("");
     }
 
     function renderRecentOrders() {
-      const container = $("recentOrders");
 
-      const recent = orders.slice(0, 5);
+      const container =
+        $("recentOrders");
+
+      const recent =
+        orders.slice(0, 5);
 
       if (!recent.length) {
+
         container.innerHTML =
           '<div class="empty">Your recent orders will appear here.</div>';
+
         return;
       }
 
@@ -1607,8 +2040,11 @@
                 <th>Date</th>
               </tr>
             </thead>
+
             <tbody>
-              ${recent.map(orderRow).join("")}
+              ${recent
+                .map(orderRow)
+                .join("")}
             </tbody>
           </table>
         </div>
@@ -1616,17 +2052,50 @@
     }
 
     function orderRow(order) {
+
       return `
         <tr>
-          <td>${escapeHtml(order.customer_name)}</td>
-          <td>${escapeHtml(order.product_name)}</td>
-          <td>${escapeHtml(naira(order.amount))}</td>
+
           <td>
-            <span class="status ${escapeHtml(order.status)}">
-              ${escapeHtml(order.status)}
+            ${escapeHtml(
+              order.customer_name
+            )}
+          </td>
+
+          <td>
+            ${escapeHtml(
+              order.product_name
+            )}
+          </td>
+
+          <td>
+            ${escapeHtml(
+              naira(
+                order.amount
+              )
+            )}
+          </td>
+
+          <td>
+            <span
+              class="status ${escapeHtml(
+                order.status
+              )}"
+            >
+              ${escapeHtml(
+                order.status
+              )}
             </span>
           </td>
-          <td>${escapeHtml(dateText(order.created_at))}</td>
+
+          <td>
+            ${escapeHtml(
+              dateText(
+                order.created_at
+              )
+            )}
+          </td>
+
         </tr>
       `;
     }
@@ -1636,17 +2105,23 @@
        ========================================================== */
 
     function renderOrders() {
-      const container = $("ordersTable");
+
+      const container =
+        $("ordersTable");
 
       if (!orders.length) {
+
         container.innerHTML =
           '<div class="empty">No orders yet. Create your first SellFlow order.</div>';
+
         return;
       }
 
       container.innerHTML = `
         <div class="table-wrap">
+
           <table>
+
             <thead>
               <tr>
                 <th>Customer</th>
@@ -1657,35 +2132,94 @@
                 <th>Action</th>
               </tr>
             </thead>
+
             <tbody>
-              ${orders.map((order) => `
-                <tr>
-                  <td>${escapeHtml(order.customer_name)}</td>
-                  <td>${escapeHtml(order.product_name)}</td>
-                  <td>${escapeHtml(naira(order.amount))}</td>
-                  <td>
-                    <span class="status ${escapeHtml(order.status)}">
-                      ${escapeHtml(order.status)}
-                    </span>
-                  </td>
-                  <td>${escapeHtml(dateText(order.created_at))}</td>
-                  <td>
-                    ${
-                      order.status === "paid"
-                        ? `<button class="secondary-btn" type="button"
-                            onclick="viewOrderStatus('${order.id}')">
-                            View
-                          </button>`
-                        : `<button class="primary-btn" type="button"
-                            onclick="preparePayment('${order.id}')">
-                            Pay link
-                          </button>`
-                    }
-                  </td>
-                </tr>
-              `).join("")}
+
+              ${orders
+                .map(
+                  (order) => `
+
+                    <tr>
+
+                      <td>
+                        ${escapeHtml(
+                          order.customer_name
+                        )}
+                      </td>
+
+                      <td>
+                        ${escapeHtml(
+                          order.product_name
+                        )}
+                      </td>
+
+                      <td>
+                        ${escapeHtml(
+                          naira(
+                            order.amount
+                          )
+                        )}
+                      </td>
+
+                      <td>
+                        <span
+                          class="status ${escapeHtml(
+                            order.status
+                          )}"
+                        >
+                          ${escapeHtml(
+                            order.status
+                          )}
+                        </span>
+                      </td>
+
+                      <td>
+                        ${escapeHtml(
+                          dateText(
+                            order.created_at
+                          )
+                        )}
+                      </td>
+
+                      <td>
+
+                        ${
+                          order.status ===
+                          "paid"
+
+                            ? `
+                              <button
+                                class="secondary-btn"
+                                type="button"
+                                onclick="viewOrderStatus('${order.id}')"
+                              >
+                                View
+                              </button>
+                            `
+
+                            : `
+                              <button
+                                class="primary-btn"
+                                type="button"
+                                onclick="preparePayment('${order.id}')"
+                              >
+                                Pay link
+                              </button>
+                            `
+                        }
+
+                      </td>
+
+                    </tr>
+
+                  `
+                )
+                .join("")}
+
             </tbody>
+
           </table>
+
         </div>
       `;
     }
@@ -1694,131 +2228,224 @@
        CREATE ORDER
        ========================================================== */
 
-    $("orderForm").addEventListener("submit", async (event) => {
-      event.preventDefault();
+    $("orderForm").addEventListener(
+      "submit",
+      async (event) => {
 
-      if (!currentUser) {
-        showPage("dashboard");
-        return;
-      }
+        event.preventDefault();
 
-      const customerName = $("customerName").value.trim();
-      const customerEmail = $("customerEmail").value.trim();
-      const customerPhone = $("customerPhone").value.trim();
-      const productName = $("productName").value.trim();
-      const amount = Number($("amount").value);
+        if (!currentUser) {
 
-      if (!customerName || !customerEmail || !productName) {
-        showMessage(
-          $("orderMessage"),
-          "Complete the required customer and product fields."
+          showPage("dashboard");
+
+          return;
+        }
+
+        const customerName =
+          $("customerName")
+            .value
+            .trim();
+
+        const customerEmail =
+          $("customerEmail")
+            .value
+            .trim();
+
+        const customerPhone =
+          $("customerPhone")
+            .value
+            .trim();
+
+        const productName =
+          $("productName")
+            .value
+            .trim();
+
+        const amount =
+          Number(
+            $("amount").value
+          );
+
+        if (
+          !customerName ||
+          !customerEmail ||
+          !productName
+        ) {
+
+          showMessage(
+            $("orderMessage"),
+            "Complete the required customer and product fields."
+          );
+
+          return;
+        }
+
+        if (
+          !Number.isFinite(amount) ||
+          amount <= 0
+        ) {
+
+          showMessage(
+            $("orderMessage"),
+            "Enter a valid amount greater than ₦0."
+          );
+
+          return;
+        }
+
+        hideMessage(
+          $("orderMessage")
         );
-        return;
-      }
 
-      if (!Number.isFinite(amount) || amount <= 0) {
-        showMessage(
-          $("orderMessage"),
-          "Enter a valid amount greater than ₦0."
-        );
-        return;
-      }
+        const button =
+          $("createOrderBtn");
 
-      hideMessage($("orderMessage"));
-
-      const button = $("createOrderBtn");
-
-      setButtonLoading(
-        button,
-        true,
-        "Create order"
-      );
-
-      try {
-        const { data, error } =
-          await supabaseClient
-            .from("orders")
-            .insert({
-              seller_id: currentUser.id,
-              customer_name: customerName,
-              customer_email: customerEmail,
-              customer_phone: customerPhone,
-              product_name: productName,
-              amount,
-              status: "pending"
-            })
-            .select()
-            .single();
-
-        if (error) throw error;
-
-        orders.unshift(data);
-
-        $("orderForm").reset();
-
-        currentPaymentOrder = data;
-
-        /*
-          Generate the real Paystack authorization URL
-          through the Supabase Edge Function.
-        */
-        await preparePayment(data.id);
-
-      } catch (error) {
-        console.error("Create order error:", error);
-
-        showMessage(
-          $("orderMessage"),
-          error.message || "Unable to create order."
-        );
-      } finally {
         setButtonLoading(
           button,
-          false,
+          true,
           "Create order"
         );
+
+        try {
+
+          const {
+            data,
+            error
+          } =
+            await supabaseClient
+              .from("orders")
+              .insert({
+
+                seller_id:
+                  currentUser.id,
+
+                customer_name:
+                  customerName,
+
+                customer_email:
+                  customerEmail,
+
+                customer_phone:
+                  customerPhone,
+
+                product_name:
+                  productName,
+
+                amount,
+
+                status:
+                  "pending"
+
+              })
+              .select()
+              .single();
+
+          if (error) {
+            throw error;
+          }
+
+          orders.unshift(data);
+
+          $("orderForm").reset();
+
+          currentPaymentOrder =
+            data;
+
+          await preparePayment(
+            data.id
+          );
+
+        } catch (error) {
+
+          console.error(
+            "Create order error:",
+            error
+          );
+
+          showMessage(
+            $("orderMessage"),
+            error.message ||
+              "Unable to create order."
+          );
+
+        } finally {
+
+          setButtonLoading(
+            button,
+            false,
+            "Create order"
+          );
+        }
       }
-    });
+    );
 
     /* ==========================================================
-       PAYSTACK
+       PAYSTACK — INITIALIZE
        ========================================================== */
 
-    async function preparePayment(orderId) {
+    async function preparePayment(
+      orderId
+    ) {
+
       const order =
         orders.find(
-          (item) => item.id === orderId
+          (item) =>
+            item.id === orderId
         );
 
       if (!order) {
-        alert("Order not found.");
+
+        alert(
+          "Order not found."
+        );
+
         return;
       }
 
-      if (order.status === "paid") {
-        alert("This order has already been paid.");
+      if (
+        order.status ===
+        "paid"
+      ) {
+
+        alert(
+          "This order has already been paid."
+        );
+
         return;
       }
 
-      if (!order.customer_email) {
+      if (
+        !order.customer_email
+      ) {
+
         alert(
           "This order needs a customer email before payment can start."
         );
+
         return;
       }
 
       try {
+
         const {
           data: {
             session
           },
-          error: sessionError
-        } = await supabaseClient.auth.getSession();
+          error:
+            sessionError
+        } =
+          await supabaseClient.auth
+            .getSession();
 
-        if (sessionError || !session) {
+        if (
+          sessionError ||
+          !session
+        ) {
+
           alert(
             "Your session has expired. Please log in again."
           );
+
           return;
         }
 
@@ -1826,24 +2453,28 @@
           data,
           error
         } =
-          await supabaseClient.functions.invoke(
-            "initialize-payment",
-            {
-              body: {
-                order_id: order.id
+          await supabaseClient
+            .functions
+            .invoke(
+              "initialize-payment",
+              {
+                body: {
+                  order_id:
+                    order.id
+                }
               }
-            }
-          );
+            );
 
         if (error) {
+
           console.error(
-            "Payment function error:",
+            "Payment initialization error:",
             error
           );
 
           alert(
             error.message ||
-            "Unable to initialize payment."
+              "Unable to initialize payment."
           );
 
           return;
@@ -1853,30 +2484,38 @@
           !data ||
           !data.authorization_url
         ) {
+
           alert(
             data?.error ||
-            "Paystack did not return a payment link."
+              "Paystack did not return a payment link."
           );
 
           return;
         }
 
         /*
-          Store the returned payment link in our local
-          in-memory state and database already updated
-          by the Edge Function.
+          The Edge Function has already saved:
+          - payment_reference
+          - payment_link
+
+          into the real Supabase order.
         */
+
         order.payment_link =
           data.authorization_url;
 
         order.payment_reference =
           data.reference;
 
-        currentPaymentOrder = order;
+        currentPaymentOrder =
+          order;
 
-        renderPaymentLink(order);
+        renderPaymentLink(
+          order
+        );
 
       } catch (error) {
+
         console.error(
           "Payment error:",
           error
@@ -1884,210 +2523,839 @@
 
         alert(
           error.message ||
-          "Something went wrong while starting payment."
+            "Something went wrong while starting payment."
         );
       }
     }
 
-    window.preparePayment = preparePayment;
+    window.preparePayment =
+      preparePayment;
 
-    function renderPaymentLink(order) {
-      $("paymentOrderInfo").innerHTML = `
-        <div style="
-          border:1px solid var(--line);
-          border-radius:14px;
-          padding:16px;
-          text-align:left;
-        ">
-          <div style="font-weight:800;margin-bottom:7px;">
-            ${escapeHtml(order.product_name)}
+    function renderPaymentLink(
+      order
+    ) {
+
+      $("paymentOrderInfo")
+        .innerHTML = `
+
+          <div
+            style="
+              border:1px solid var(--line);
+              border-radius:14px;
+              padding:16px;
+              text-align:left;
+            "
+          >
+
+            <div
+              style="
+                font-weight:800;
+                margin-bottom:7px;
+              "
+            >
+              ${escapeHtml(
+                order.product_name
+              )}
+            </div>
+
+            <div
+              style="
+                display:flex;
+                justify-content:space-between;
+                gap:12px;
+                color:var(--muted);
+                font-size:13px;
+              "
+            >
+
+              <span>
+                ${escapeHtml(
+                  order.customer_name
+                )}
+              </span>
+
+              <strong
+                style="color:var(--ink);"
+              >
+                ${escapeHtml(
+                  naira(
+                    order.amount
+                  )
+                )}
+              </strong>
+
+            </div>
+
           </div>
+        `;
 
-          <div style="
-            display:flex;
-            justify-content:space-between;
-            gap:12px;
-            color:var(--muted);
-            font-size:13px;
-          ">
-            <span>${escapeHtml(order.customer_name)}</span>
-            <strong style="color:var(--ink);">
-              ${escapeHtml(naira(order.amount))}
+      $("paymentLinkInput")
+        .value =
+          order.payment_link ||
+          "";
+
+      $("payNowBtn").onclick =
+        () => {
+
+          if (
+            order.payment_link
+          ) {
+
+            window.location.href =
+              order.payment_link;
+          }
+        };
+
+      showPage(
+        "payment-link"
+      );
+    }
+
+    $("copyPaymentBtn")
+      .addEventListener(
+        "click",
+        async () => {
+
+          const value =
+            $("paymentLinkInput")
+              .value;
+
+          if (!value) {
+            return;
+          }
+
+          try {
+
+            if (
+              navigator.clipboard &&
+              navigator.clipboard.writeText
+            ) {
+
+              await navigator.clipboard
+                .writeText(
+                  value
+                );
+
+            } else {
+
+              $("paymentLinkInput")
+                .select();
+
+              document.execCommand(
+                "copy"
+              );
+            }
+
+            $("copyPaymentBtn")
+              .textContent =
+                "Copied";
+
+            setTimeout(
+              () => {
+                $("copyPaymentBtn")
+                  .textContent =
+                    "Copy";
+              },
+              1500
+            );
+
+          } catch (error) {
+
+            console.error(
+              "Copy failed:",
+              error
+            );
+
+            $("paymentLinkInput")
+              .select();
+
+            document.execCommand(
+              "copy"
+            );
+
+            $("copyPaymentBtn")
+              .textContent =
+                "Copied";
+          }
+        }
+      );
+
+    /* ==========================================================
+       PAYSTACK — VERIFY CALLBACK
+       ========================================================== */
+
+    async function handlePaystackCallback(
+      reference
+    ) {
+
+      showPage(
+        "payment-status"
+      );
+
+      $("statusIcon")
+        .textContent = "…";
+
+      $("statusTitle")
+        .textContent =
+          "Verifying payment";
+
+      $("statusText")
+        .textContent =
+          "SellFlow is securely checking this transaction with Paystack.";
+
+      $("statusDetails")
+        .innerHTML = `
+
+          <div
+            style="
+              background:#fff6df;
+              color:#79591b;
+              border-radius:12px;
+              padding:14px;
+              font-size:13px;
+              line-height:1.5;
+            "
+          >
+            Reference:
+            <strong>
+              ${escapeHtml(
+                reference
+              )}
             </strong>
           </div>
-        </div>
-      `;
 
-      $("paymentLinkInput").value =
-        order.payment_link || "";
-
-      $("payNowBtn").onclick = () => {
-        if (order.payment_link) {
-          window.location.href =
-            order.payment_link;
-        }
-      };
-
-      showPage("payment-link");
-    }
-
-    $("copyPaymentBtn").addEventListener("click", async () => {
-      const value =
-        $("paymentLinkInput").value;
-
-      if (!value) return;
+        `;
 
       try {
-        await navigator.clipboard.writeText(value);
-        $("copyPaymentBtn").textContent = "Copied";
 
-        setTimeout(() => {
-          $("copyPaymentBtn").textContent = "Copy";
-        }, 1500);
+        const {
+          data: {
+            session
+          },
+          error:
+            sessionError
+        } =
+          await supabaseClient.auth
+            .getSession();
 
-      } catch {
-        $("paymentLinkInput").select();
-        document.execCommand("copy");
-        $("copyPaymentBtn").textContent = "Copied";
-      }
-    });
+        if (
+          sessionError ||
+          !session
+        ) {
 
-    async function handlePaystackCallback(reference) {
-      /*
-        Paystack redirects back to the callback URL after checkout.
-        The payment must be verified server-side before an order is
-        marked paid.
+          $("statusIcon")
+            .textContent = "×";
 
-        Until the verification/webhook Edge Function exists, we
-        deliberately do NOT mark an order paid from the browser.
-      */
+          $("statusTitle")
+            .textContent =
+              "Session expired";
 
-      showPage("payment-status");
+          $("statusText")
+            .textContent =
+              "Your SellFlow session expired before payment verification could complete.";
 
-      $("statusIcon").textContent = "…";
-      $("statusTitle").textContent =
-        "Payment returned";
+          $("statusDetails")
+            .innerHTML = `
 
-      $("statusText").textContent =
-        "Your Paystack checkout returned to SellFlow. Payment verification is handled server-side.";
+              <div
+                style="
+                  background:#fff0f0;
+                  color:var(--danger);
+                  border-radius:12px;
+                  padding:14px;
+                  font-size:13px;
+                  line-height:1.5;
+                "
+              >
+                Please log in again and check the order status.
+              </div>
 
-      $("statusDetails").innerHTML = `
-        <div style="
-          background:#fff6df;
-          color:#79591b;
-          border-radius:12px;
-          padding:14px;
-          font-size:13px;
-          line-height:1.5;
-        ">
-          Reference: <strong>${escapeHtml(reference)}</strong><br />
-          We will only mark the order as paid after Paystack verification.
-        </div>
-      `;
-    }
+            `;
 
-    function viewOrderStatus(orderId) {
-      const order =
-        orders.find(
-          (item) => item.id === orderId
+          clearPaymentQuery();
+
+          return;
+        }
+
+        /*
+          IMPORTANT:
+          The browser does NOT mark the order as paid.
+
+          verify-payment:
+          1. Checks the Paystack transaction.
+          2. Confirms the transaction succeeded.
+          3. Confirms the SellFlow order belongs to this seller.
+          4. Confirms the amount matches.
+          5. Updates the order to "paid".
+        */
+
+        const {
+          data,
+          error
+        } =
+          await supabaseClient
+            .functions
+            .invoke(
+              "verify-payment",
+              {
+                body: {
+                  reference
+                }
+              }
+            );
+
+        if (error) {
+
+          console.error(
+            "Verification function error:",
+            error
+          );
+
+          $("statusIcon")
+            .textContent = "×";
+
+          $("statusTitle")
+            .textContent =
+              "Payment verification failed";
+
+          $("statusText")
+            .textContent =
+              "SellFlow could not complete payment verification.";
+
+          $("statusDetails")
+            .innerHTML = `
+
+              <div
+                style="
+                  background:#fff0f0;
+                  color:var(--danger);
+                  border-radius:12px;
+                  padding:14px;
+                  font-size:13px;
+                  line-height:1.5;
+                "
+              >
+
+                Reference:
+                <strong>
+                  ${escapeHtml(
+                    reference
+                  )}
+                </strong>
+
+                <br /><br />
+
+                ${escapeHtml(
+                  error.message ||
+                    "Please check your order again."
+                )}
+
+              </div>
+
+            `;
+
+          clearPaymentQuery();
+
+          return;
+        }
+
+        /*
+          Successful verification.
+        */
+
+        if (
+          data &&
+          data.verified === true &&
+          (
+            data.status ===
+              "paid" ||
+            data.order?.status ===
+              "paid"
+          )
+        ) {
+
+          /*
+            Reload the real database data.
+            This ensures the dashboard does not
+            rely on browser-side assumptions.
+          */
+
+          await loadOrders();
+
+          renderAll();
+
+          const verifiedOrder =
+            data.order ||
+            orders.find(
+              (order) =>
+                order.id ===
+                data.order_id
+            );
+
+          $("statusIcon")
+            .textContent = "✓";
+
+          $("statusTitle")
+            .textContent =
+              "Payment confirmed";
+
+          $("statusText")
+            .textContent =
+              "Payment was successfully verified with Paystack and the order has been marked as paid.";
+
+          $("statusDetails")
+            .innerHTML = `
+
+              <div
+                style="
+                  border:1px solid var(--line);
+                  border-radius:14px;
+                  padding:18px;
+                  text-align:left;
+                "
+              >
+
+                ${
+                  verifiedOrder
+                    ? `
+
+                      <div
+                        style="
+                          font-weight:800;
+                          margin-bottom:12px;
+                        "
+                      >
+                        ${escapeHtml(
+                          verifiedOrder.product_name
+                        )}
+                      </div>
+
+                      <div
+                        style="
+                          display:grid;
+                          gap:8px;
+                          font-size:13px;
+                        "
+                      >
+
+                        <div>
+                          <span
+                            style="
+                              color:var(--muted);
+                            "
+                          >
+                            Customer:
+                          </span>
+
+                          ${escapeHtml(
+                            verifiedOrder.customer_name
+                          )}
+                        </div>
+
+                        <div>
+                          <span
+                            style="
+                              color:var(--muted);
+                            "
+                          >
+                            Amount:
+                          </span>
+
+                          ${escapeHtml(
+                            naira(
+                              verifiedOrder.amount
+                            )
+                          )}
+                        </div>
+
+                        <div>
+                          <span
+                            style="
+                              color:var(--muted);
+                            "
+                          >
+                            Status:
+                          </span>
+
+                          <span
+                            class="status paid"
+                          >
+                            PAID
+                          </span>
+                        </div>
+
+                        <div>
+                          <span
+                            style="
+                              color:var(--muted);
+                            "
+                          >
+                            Reference:
+                          </span>
+
+                          ${escapeHtml(
+                            reference
+                          )}
+                        </div>
+
+                      </div>
+
+                    `
+                    : `
+
+                      <div>
+                        Payment verified successfully.
+                      </div>
+
+                    `
+                }
+
+              </div>
+
+            `;
+
+          clearPaymentQuery();
+
+          return;
+        }
+
+        /*
+          Paystack verification completed but
+          the transaction is not successful.
+        */
+
+        $("statusIcon")
+          .textContent = "…";
+
+        $("statusTitle")
+          .textContent =
+            "Payment not completed";
+
+        $("statusText")
+          .textContent =
+            data?.message ||
+            "Paystack has not confirmed this transaction as successful.";
+
+        $("statusDetails")
+          .innerHTML = `
+
+            <div
+              style="
+                background:#fff6df;
+                color:#79591b;
+                border-radius:12px;
+                padding:14px;
+                font-size:13px;
+                line-height:1.5;
+              "
+            >
+
+              Reference:
+              <strong>
+                ${escapeHtml(
+                  reference
+                )}
+              </strong>
+
+              <br /><br />
+
+              Your order remains pending until Paystack confirms a successful payment.
+
+            </div>
+
+          `;
+
+        clearPaymentQuery();
+
+      } catch (error) {
+
+        console.error(
+          "Payment verification error:",
+          error
         );
 
-      if (!order) return;
+        $("statusIcon")
+          .textContent = "×";
 
-      showPage("payment-status");
+        $("statusTitle")
+          .textContent =
+            "Unable to verify payment";
 
-      $("statusIcon").textContent =
-        order.status === "paid" ? "✓" : "…";
+        $("statusText")
+          .textContent =
+            "SellFlow could not complete the payment verification request.";
 
-      $("statusTitle").textContent =
-        order.status === "paid"
-          ? "Payment confirmed"
-          : "Payment pending";
+        $("statusDetails")
+          .innerHTML = `
 
-      $("statusText").textContent =
-        order.status === "paid"
-          ? "This order has been recorded as paid."
-          : "This order is waiting for payment.";
+            <div
+              style="
+                background:#fff0f0;
+                color:var(--danger);
+                border-radius:12px;
+                padding:14px;
+                font-size:13px;
+                line-height:1.5;
+              "
+            >
 
-      $("statusDetails").innerHTML = `
-        <div style="
-          border:1px solid var(--line);
-          border-radius:14px;
-          padding:18px;
-          text-align:left;
-        ">
-          <div style="font-weight:800;margin-bottom:12px;">
-            ${escapeHtml(order.product_name)}
-          </div>
+              Reference:
+              <strong>
+                ${escapeHtml(
+                  reference
+                )}
+              </strong>
 
-          <div style="display:grid;gap:8px;font-size:13px;">
-            <div>
-              <span style="color:var(--muted);">Customer:</span>
-              ${escapeHtml(order.customer_name)}
+              <br /><br />
+
+              Please check the order again from your dashboard.
+
             </div>
 
-            <div>
-              <span style="color:var(--muted);">Amount:</span>
-              ${escapeHtml(naira(order.amount))}
-            </div>
+          `;
 
-            <div>
-              <span style="color:var(--muted);">Status:</span>
-              ${escapeHtml(order.status)}
-            </div>
-
-            <div>
-              <span style="color:var(--muted);">Created:</span>
-              ${escapeHtml(dateText(order.created_at))}
-            </div>
-          </div>
-        </div>
-      `;
+        clearPaymentQuery();
+      }
     }
 
-    window.viewOrderStatus = viewOrderStatus;
+    /* ==========================================================
+       ORDER STATUS
+       ========================================================== */
+
+    function viewOrderStatus(
+      orderId
+    ) {
+
+      const order =
+        orders.find(
+          (item) =>
+            item.id === orderId
+        );
+
+      if (!order) {
+        return;
+      }
+
+      showPage(
+        "payment-status"
+      );
+
+      $("statusIcon")
+        .textContent =
+          order.status === "paid"
+            ? "✓"
+            : "…";
+
+      $("statusTitle")
+        .textContent =
+          order.status === "paid"
+            ? "Payment confirmed"
+            : "Payment pending";
+
+      $("statusText")
+        .textContent =
+          order.status === "paid"
+            ? "This order has been recorded as paid."
+            : "This order is waiting for payment.";
+
+      $("statusDetails")
+        .innerHTML = `
+
+          <div
+            style="
+              border:1px solid var(--line);
+              border-radius:14px;
+              padding:18px;
+              text-align:left;
+            "
+          >
+
+            <div
+              style="
+                font-weight:800;
+                margin-bottom:12px;
+              "
+            >
+              ${escapeHtml(
+                order.product_name
+              )}
+            </div>
+
+            <div
+              style="
+                display:grid;
+                gap:8px;
+                font-size:13px;
+              "
+            >
+
+              <div>
+                <span
+                  style="color:var(--muted);"
+                >
+                  Customer:
+                </span>
+
+                ${escapeHtml(
+                  order.customer_name
+                )}
+              </div>
+
+              <div>
+                <span
+                  style="color:var(--muted);"
+                >
+                  Amount:
+                </span>
+
+                ${escapeHtml(
+                  naira(
+                    order.amount
+                  )
+                )}
+              </div>
+
+              <div>
+                <span
+                  style="color:var(--muted);"
+                >
+                  Status:
+                </span>
+
+                <span
+                  class="status ${escapeHtml(
+                    order.status
+                  )}"
+                >
+                  ${escapeHtml(
+                    order.status
+                  )}
+                </span>
+              </div>
+
+              <div>
+                <span
+                  style="color:var(--muted);"
+                >
+                  Created:
+                </span>
+
+                ${escapeHtml(
+                  dateText(
+                    order.created_at
+                  )
+                )}
+              </div>
+
+              ${
+                order.payment_reference
+                  ? `
+
+                    <div>
+                      <span
+                        style="color:var(--muted);"
+                      >
+                        Payment reference:
+                      </span>
+
+                      ${escapeHtml(
+                        order.payment_reference
+                      )}
+                    </div>
+
+                  `
+                  : ""
+              }
+
+              ${
+                order.paid_at
+                  ? `
+
+                    <div>
+                      <span
+                        style="color:var(--muted);"
+                      >
+                        Paid:
+                      </span>
+
+                      ${escapeHtml(
+                        dateText(
+                          order.paid_at
+                        )
+                      )}
+                    </div>
+
+                  `
+                  : ""
+              }
+
+            </div>
+
+          </div>
+        `;
+    }
+
+    window.viewOrderStatus =
+      viewOrderStatus;
 
     /* ==========================================================
        REPORTS
        ========================================================== */
 
     function renderReports() {
-      const paid = orders.filter(
-        (order) => order.status === "paid"
-      );
 
-      const pending = orders.filter(
-        (order) => order.status === "pending"
-      );
+      const paid =
+        orders.filter(
+          (order) =>
+            order.status === "paid"
+        );
 
-      const revenue = paid.reduce(
-        (sum, order) =>
-          sum + Number(order.amount || 0),
-        0
-      );
+      const pending =
+        orders.filter(
+          (order) =>
+            order.status === "pending"
+        );
 
-      const pendingValue = pending.reduce(
-        (sum, order) =>
-          sum + Number(order.amount || 0),
-        0
-      );
+      const revenue =
+        paid.reduce(
+          (sum, order) =>
+            sum +
+            Number(
+              order.amount || 0
+            ),
+          0
+        );
+
+      const pendingValue =
+        pending.reduce(
+          (sum, order) =>
+            sum +
+            Number(
+              order.amount || 0
+            ),
+          0
+        );
 
       const average =
         paid.length
           ? revenue / paid.length
           : 0;
 
-      $("reportRevenue").textContent =
-        naira(revenue);
+      $("reportRevenue")
+        .textContent =
+          naira(revenue);
 
-      $("reportPaidCount").textContent =
-        paid.length;
+      $("reportPaidCount")
+        .textContent =
+          paid.length;
 
-      $("reportAverage").textContent =
-        naira(average);
+      $("reportAverage")
+        .textContent =
+          naira(average);
 
-      $("reportPending").textContent =
-        naira(pendingValue);
+      $("reportPending")
+        .textContent =
+          naira(pendingValue);
 
       renderSalesChart(
         $("reportChart")
@@ -2098,70 +3366,103 @@
        PROFILE
        ========================================================== */
 
-    $("profileForm").addEventListener("submit", async (event) => {
-      event.preventDefault();
+    $("profileForm").addEventListener(
+      "submit",
+      async (event) => {
 
-      if (!currentUser) return;
+        event.preventDefault();
 
-      const businessName =
-        $("profileBusiness").value.trim();
+        if (!currentUser) {
+          return;
+        }
 
-      const fullName =
-        $("profileFullName").value.trim();
+        const businessName =
+          $("profileBusiness")
+            .value
+            .trim();
 
-      const phone =
-        $("profilePhone").value.trim();
+        const fullName =
+          $("profileFullName")
+            .value
+            .trim();
 
-      hideMessage($("profileMessage"));
+        const phone =
+          $("profilePhone")
+            .value
+            .trim();
 
-      try {
-        const { data, error } =
-          await supabaseClient
-            .from("profiles")
-            .update({
-              business_name: businessName,
-              full_name: fullName,
-              phone
-            })
-            .eq("id", currentUser.id)
-            .select()
-            .single();
-
-        if (error) throw error;
-
-        profile = data;
-
-        updateSidebar();
-
-        showMessage(
-          $("profileMessage"),
-          "Profile updated successfully.",
-          "success"
+        hideMessage(
+          $("profileMessage")
         );
 
-      } catch (error) {
-        console.error(error);
+        try {
 
-        showMessage(
-          $("profileMessage"),
-          error.message ||
-          "Unable to update profile."
-        );
+          const {
+            data,
+            error
+          } =
+            await supabaseClient
+              .from("profiles")
+              .update({
+
+                business_name:
+                  businessName,
+
+                full_name:
+                  fullName,
+
+                phone
+
+              })
+              .eq(
+                "id",
+                currentUser.id
+              )
+              .select()
+              .single();
+
+          if (error) {
+            throw error;
+          }
+
+          profile = data;
+
+          updateSidebar();
+
+          showMessage(
+            $("profileMessage"),
+            "Profile updated successfully.",
+            "success"
+          );
+
+        } catch (error) {
+
+          console.error(error);
+
+          showMessage(
+            $("profileMessage"),
+            error.message ||
+              "Unable to update profile."
+          );
+        }
       }
-    });
+    );
 
     /* ==========================================================
        SIDEBAR
        ========================================================== */
 
     function updateSidebar() {
-      $("sidebarBusiness").textContent =
-        profile?.business_name ||
-        "SellFlow Seller";
 
-      $("sidebarEmail").textContent =
-        currentUser?.email ||
-        "";
+      $("sidebarBusiness")
+        .textContent =
+          profile?.business_name ||
+          "SellFlow Seller";
+
+      $("sidebarEmail")
+        .textContent =
+          currentUser?.email ||
+          "";
     }
 
     /* ==========================================================
@@ -2169,9 +3470,13 @@
        ========================================================== */
 
     function renderAll() {
+
       updateSidebar();
+
       renderDashboard();
+
       renderOrders();
+
       renderReports();
     }
 
@@ -2180,27 +3485,43 @@
        ========================================================== */
 
     supabaseClient.auth.onAuthStateChange(
-      async (event, session) => {
+      async (
+        event,
+        session
+      ) => {
+
         if (
-          event === "SIGNED_IN" &&
+          event ===
+            "SIGNED_IN" &&
           session?.user
         ) {
-          currentUser = session.user;
 
-          /*
-            Avoid repeatedly rebuilding the app while
-            Supabase refreshes the session.
-          */
+          currentUser =
+            session.user;
+
           if (
-            $("appScreen").classList.contains("hidden")
+            $("appScreen")
+              .classList
+              .contains("hidden")
           ) {
+
             await loadApp();
           }
         }
 
-        if (event === "SIGNED_OUT") {
-          $("appScreen").classList.add("hidden");
-          $("authScreen").classList.remove("hidden");
+        if (
+          event ===
+            "SIGNED_OUT"
+        ) {
+
+          $("appScreen")
+            .classList
+            .add("hidden");
+
+          $("authScreen")
+            .classList
+            .remove("hidden");
+
           setAuthMode("login");
         }
       }
@@ -2211,17 +3532,26 @@
        ========================================================== */
 
     (async function boot() {
-      setAuthMode("signup");
+
+      setAuthMode(
+        "signup"
+      );
 
       const {
         data: {
           session
         }
-      } = await supabaseClient.auth.getSession();
+      } =
+        await supabaseClient.auth
+          .getSession();
 
-      if (session?.user) {
+      if (
+        session?.user
+      ) {
+
         await loadApp();
       }
+
     })();
   </script>
 
