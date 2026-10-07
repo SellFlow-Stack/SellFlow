@@ -29,16 +29,19 @@
       box-sizing: border-box;
     }
 
-    html, body {
+    html,
+    body {
       margin: 0;
       min-height: 100%;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-        "Segoe UI", sans-serif;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system,
+        BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--ink);
       background: var(--bg);
     }
 
-    button, input, select {
+    button,
+    input,
+    select {
       font: inherit;
     }
 
@@ -496,7 +499,8 @@
       min-width: 750px;
     }
 
-    th, td {
+    th,
+    td {
       text-align: left;
       padding: 14px 15px;
       border-bottom: 1px solid var(--line);
@@ -705,6 +709,7 @@
   <!-- AUTH -->
   <section id="authScreen" class="auth-screen screen">
     <div class="auth-card">
+
       <div class="brand">
         <div class="brand-mark">S</div>
         <span>SellFlow</span>
@@ -712,6 +717,7 @@
 
       <div class="auth-header">
         <h1 id="authTitle">Welcome to SellFlow</h1>
+
         <p id="authSubtitle">
           Accept payments, manage orders and track your sales in one place.
         </p>
@@ -720,30 +726,68 @@
       <div id="authMessage" class="hidden"></div>
 
       <form id="authForm">
+
         <div id="signupFields">
+
           <div class="field">
-            <label for="fullName">Full name</label>
-            <input id="fullName" type="text" autocomplete="name" />
+            <label for="fullName">
+              Full name
+            </label>
+
+            <input
+              id="fullName"
+              type="text"
+              autocomplete="name"
+            />
           </div>
 
           <div class="field">
-            <label for="businessName">Business name</label>
-            <input id="businessName" type="text" autocomplete="organization" />
+            <label for="businessName">
+              Business name
+            </label>
+
+            <input
+              id="businessName"
+              type="text"
+              autocomplete="organization"
+            />
           </div>
 
           <div class="field">
-            <label for="phone">Phone number</label>
-            <input id="phone" type="tel" autocomplete="tel" />
+            <label for="phone">
+              Phone number
+            </label>
+
+            <input
+              id="phone"
+              type="tel"
+              autocomplete="tel"
+            />
           </div>
+
         </div>
 
         <div class="field">
-          <label for="email">Email address</label>
-          <input id="email" type="email" autocomplete="email" required />
+
+          <label for="email">
+            Email address
+          </label>
+
+          <input
+            id="email"
+            type="email"
+            autocomplete="email"
+            required
+          />
+
         </div>
 
         <div class="field">
-          <label for="password">Password</label>
+
+          <label for="password">
+            Password
+          </label>
+
           <input
             id="password"
             type="password"
@@ -751,144 +795,368 @@
             autocomplete="current-password"
             required
           />
+
         </div>
 
-        <button id="authSubmit" class="primary-btn full" type="submit">
+        <button
+          id="authSubmit"
+          class="primary-btn full"
+          type="submit"
+        >
           Create SellFlow account
         </button>
+
       </form>
 
       <div class="auth-switch">
-        <span id="authSwitchText">Already have an account?</span>
-        <button id="authSwitch" type="button">Log in</button>
+
+        <span id="authSwitchText">
+          Already have an account?
+        </span>
+
+        <button
+          id="authSwitch"
+          type="button"
+        >
+          Log in
+        </button>
+
       </div>
+
     </div>
   </section>
 
   <!-- APP -->
-  <section id="appScreen" class="app screen hidden">
+  <section
+    id="appScreen"
+    class="app screen hidden"
+  >
 
-    <aside id="sidebar" class="sidebar">
+    <aside
+      id="sidebar"
+      class="sidebar"
+    >
+
       <div class="brand">
-        <div class="brand-mark">S</div>
-        <span>SellFlow</span>
+
+        <div class="brand-mark">
+          S
+        </div>
+
+        <span>
+          SellFlow
+        </span>
+
       </div>
 
       <nav class="nav">
-        <button data-page="dashboard" class="active">Dashboard</button>
-        <button data-page="orders">Orders</button>
-        <button data-page="create-order">Create Order</button>
-        <button data-page="reports">Sales Report</button>
-        <button data-page="profile">Profile</button>
+
+        <button
+          data-page="dashboard"
+          class="active"
+        >
+          Dashboard
+        </button>
+
+        <button data-page="orders">
+          Orders
+        </button>
+
+        <button data-page="create-order">
+          Create Order
+        </button>
+
+        <button data-page="reports">
+          Sales Report
+        </button>
+
+        <button data-page="profile">
+          Profile
+        </button>
+
       </nav>
 
       <div class="sidebar-bottom">
+
         <div class="user-mini">
-          <strong id="sidebarBusiness">SellFlow Seller</strong>
+
+          <strong id="sidebarBusiness">
+            SellFlow Seller
+          </strong>
+
           <span id="sidebarEmail"></span>
+
         </div>
 
-        <button id="logoutBtn" class="danger-btn">
+        <button
+          id="logoutBtn"
+          class="danger-btn"
+        >
           Log out
         </button>
+
       </div>
+
     </aside>
 
     <main class="main">
+
       <header class="topbar">
-        <div style="display:flex;align-items:center;gap:10px;">
-          <button id="mobileMenuBtn" class="mobile-menu" type="button">☰</button>
-          <span id="topbarTitle" class="topbar-title">Dashboard</span>
+
+        <div
+          style="
+            display:flex;
+            align-items:center;
+            gap:10px;
+          "
+        >
+
+          <button
+            id="mobileMenuBtn"
+            class="mobile-menu"
+            type="button"
+          >
+            ☰
+          </button>
+
+          <span
+            id="topbarTitle"
+            class="topbar-title"
+          >
+            Dashboard
+          </span>
+
         </div>
 
-        <button id="topCreateBtn" class="primary-btn" type="button">
+        <button
+          id="topCreateBtn"
+          class="primary-btn"
+          type="button"
+        >
           + Create order
         </button>
+
       </header>
 
       <div class="content">
 
         <!-- DASHBOARD -->
-        <section id="page-dashboard" class="page">
+        <section
+          id="page-dashboard"
+          class="page"
+        >
+
           <div class="page-head">
+
             <div>
-              <h1>Good to see you 👋</h1>
-              <p>Here’s what’s happening with your business.</p>
+
+              <h1>
+                Good to see you 👋
+              </h1>
+
+              <p>
+                Here’s what’s happening with your business.
+              </p>
+
             </div>
+
           </div>
 
           <div class="stats">
+
             <div class="stat-card">
-              <div class="stat-label">Total sales</div>
-              <div id="totalSales" class="stat-value">₦0</div>
+
+              <div class="stat-label">
+                Total sales
+              </div>
+
+              <div
+                id="totalSales"
+                class="stat-value"
+              >
+                ₦0
+              </div>
+
             </div>
 
             <div class="stat-card">
-              <div class="stat-label">Orders</div>
-              <div id="totalOrders" class="stat-value">0</div>
+
+              <div class="stat-label">
+                Orders
+              </div>
+
+              <div
+                id="totalOrders"
+                class="stat-value"
+              >
+                0
+              </div>
+
             </div>
 
             <div class="stat-card">
-              <div class="stat-label">Paid orders</div>
-              <div id="paidOrders" class="stat-value">0</div>
+
+              <div class="stat-label">
+                Paid orders
+              </div>
+
+              <div
+                id="paidOrders"
+                class="stat-value"
+              >
+                0
+              </div>
+
             </div>
 
             <div class="stat-card">
-              <div class="stat-label">Pending</div>
-              <div id="pendingSales" class="stat-value">₦0</div>
+
+              <div class="stat-label">
+                Pending
+              </div>
+
+              <div
+                id="pendingSales"
+                class="stat-value"
+              >
+                ₦0
+              </div>
+
             </div>
+
           </div>
 
           <div class="dashboard-grid">
+
             <div class="panel">
+
               <div class="panel-head">
-                <span class="panel-title">Sales overview</span>
-                <span style="font-size:12px;color:var(--muted);">
+
+                <span class="panel-title">
+                  Sales overview
+                </span>
+
+                <span
+                  style="
+                    font-size:12px;
+                    color:var(--muted);
+                  "
+                >
                   Last 7 days
                 </span>
+
               </div>
 
-              <div id="salesChart" class="chart">
-                <div class="chart-empty">No sales yet</div>
+              <div
+                id="salesChart"
+                class="chart"
+              >
+
+                <div class="chart-empty">
+                  No sales yet
+                </div>
+
               </div>
+
             </div>
 
             <div class="panel">
+
               <div class="panel-head">
-                <span class="panel-title">Quick start</span>
+
+                <span class="panel-title">
+                  Quick start
+                </span>
+
               </div>
 
               <div class="quick-actions">
-                <div class="quick-action" data-go="create-order">
-                  <div class="quick-icon">+</div>
-                  <div>
-                    <strong>Create an order</strong>
-                    <span>Start collecting a payment</span>
+
+                <div
+                  class="quick-action"
+                  data-go="create-order"
+                >
+
+                  <div class="quick-icon">
+                    +
                   </div>
+
+                  <div>
+
+                    <strong>
+                      Create an order
+                    </strong>
+
+                    <span>
+                      Start collecting a payment
+                    </span>
+
+                  </div>
+
                 </div>
 
-                <div class="quick-action" data-go="orders">
-                  <div class="quick-icon">↗️</div>
-                  <div>
-                    <strong>View orders</strong>
-                    <span>Manage your customer orders</span>
+                <div
+                  class="quick-action"
+                  data-go="orders"
+                >
+
+                  <div class="quick-icon">
+                    ↗️
                   </div>
+
+                  <div>
+
+                    <strong>
+                      View orders
+                    </strong>
+
+                    <span>
+                      Manage your customer orders
+                    </span>
+
+                  </div>
+
                 </div>
 
-                <div class="quick-action" data-go="reports">
-                  <div class="quick-icon">▥</div>
-                  <div>
-                    <strong>Sales report</strong>
-                    <span>Review your business performance</span>
+                <div
+                  class="quick-action"
+                  data-go="reports"
+                >
+
+                  <div class="quick-icon">
+                    ▥
                   </div>
+
+                  <div>
+
+                    <strong>
+                      Sales report
+                    </strong>
+
+                    <span>
+                      Review your business performance
+                    </span>
+
+                  </div>
+
                 </div>
+
               </div>
+
             </div>
+
           </div>
 
-          <div class="panel" style="margin-top:18px;">
+          <div
+            class="panel"
+            style="margin-top:18px;"
+          >
+
             <div class="panel-head">
-              <span class="panel-title">Recent orders</span>
+
+              <span class="panel-title">
+                Recent orders
+              </span>
 
               <button
                 class="secondary-btn"
@@ -897,18 +1165,33 @@
               >
                 View all
               </button>
+
             </div>
 
             <div id="recentOrders"></div>
+
           </div>
+
         </section>
 
         <!-- ORDERS -->
-        <section id="page-orders" class="page hidden">
+        <section
+          id="page-orders"
+          class="page hidden"
+        >
+
           <div class="page-head">
+
             <div>
-              <h1>Orders</h1>
-              <p>View and manage every order created through SellFlow.</p>
+
+              <h1>
+                Orders
+              </h1>
+
+              <p>
+                View and manage every order created through SellFlow.
+              </p>
+
             </div>
 
             <button
@@ -918,53 +1201,104 @@
             >
               + Create order
             </button>
+
           </div>
 
           <div class="panel">
+
             <div id="ordersTable"></div>
+
           </div>
+
         </section>
 
         <!-- CREATE ORDER -->
-        <section id="page-create-order" class="page hidden">
+        <section
+          id="page-create-order"
+          class="page hidden"
+        >
+
           <div class="page-head">
+
             <div>
-              <h1>Create order</h1>
-              <p>Create a payment request for your customer.</p>
+
+              <h1>
+                Create order
+              </h1>
+
+              <p>
+                Create a payment request for your customer.
+              </p>
+
             </div>
+
           </div>
 
           <div class="panel form-card">
+
             <form id="orderForm">
 
               <div class="form-grid">
 
                 <div class="field">
-                  <label for="customerName">Customer name</label>
-                  <input id="customerName" required />
+
+                  <label for="customerName">
+                    Customer name
+                  </label>
+
+                  <input
+                    id="customerName"
+                    required
+                  />
+
                 </div>
 
                 <div class="field">
-                  <label for="customerEmail">Customer email</label>
+
+                  <label for="customerEmail">
+                    Customer email
+                  </label>
+
                   <input
                     id="customerEmail"
                     type="email"
                     required
                   />
+
                 </div>
 
                 <div class="field">
-                  <label for="customerPhone">Customer phone</label>
-                  <input id="customerPhone" type="tel" />
+
+                  <label for="customerPhone">
+                    Customer phone
+                  </label>
+
+                  <input
+                    id="customerPhone"
+                    type="tel"
+                  />
+
                 </div>
 
                 <div class="field">
-                  <label for="productName">Product / service</label>
-                  <input id="productName" required />
+
+                  <label for="productName">
+                    Product / service
+                  </label>
+
+                  <input
+                    id="productName"
+                    required
+                  />
+
                 </div>
 
                 <div class="field">
-                  <label for="amount">Amount (₦)</label>
+
+                  <label for="amount">
+                    Amount (₦)
+                  </label>
+
                   <input
                     id="amount"
                     type="number"
@@ -972,21 +1306,31 @@
                     step="0.01"
                     required
                   />
+
                 </div>
 
                 <div class="field wide">
-                  <label for="orderNote">Order note</label>
+
+                  <label for="orderNote">
+                    Order note
+                  </label>
+
                   <input
                     id="orderNote"
                     placeholder="Optional internal note"
                   />
+
                 </div>
 
               </div>
 
-              <div id="orderMessage" class="hidden"></div>
+              <div
+                id="orderMessage"
+                class="hidden"
+              ></div>
 
               <div class="form-actions">
+
                 <button
                   class="secondary-btn"
                   data-go="orders"
@@ -1002,31 +1346,54 @@
                 >
                   Create order
                 </button>
+
               </div>
 
             </form>
+
           </div>
+
         </section>
 
         <!-- PAYMENT CREATED -->
-        <section id="page-payment-link" class="page hidden">
+        <section
+          id="page-payment-link"
+          class="page hidden"
+        >
+
           <div class="panel success-box">
 
-            <div class="success-icon">✓</div>
+            <div class="success-icon">
+              ✓
+            </div>
 
-            <h1 style="margin:0 0 8px;">
+            <h1
+              style="margin:0 0 8px;"
+            >
               Order created
             </h1>
 
-            <p style="color:var(--muted);line-height:1.6;">
+            <p
+              style="
+                color:var(--muted);
+                line-height:1.6;
+              "
+            >
               Your order is ready. Start the secure Paystack checkout
               or copy the generated payment link.
             </p>
 
-            <div id="paymentOrderInfo" style="margin:25px 0;"></div>
+            <div
+              id="paymentOrderInfo"
+              style="margin:25px 0;"
+            ></div>
 
             <div class="payment-link">
-              <input id="paymentLinkInput" readonly />
+
+              <input
+                id="paymentLinkInput"
+                readonly
+              />
 
               <button
                 id="copyPaymentBtn"
@@ -1035,6 +1402,7 @@
               >
                 Copy
               </button>
+
             </div>
 
             <div
@@ -1046,6 +1414,7 @@
                 flex-wrap:wrap;
               "
             >
+
               <button
                 id="payNowBtn"
                 class="primary-btn"
@@ -1061,16 +1430,27 @@
               >
                 Back to dashboard
               </button>
+
             </div>
 
           </div>
+
         </section>
 
         <!-- PAYMENT STATUS -->
-        <section id="page-payment-status" class="page hidden">
+        <section
+          id="page-payment-status"
+          class="page hidden"
+        >
+
           <div class="panel success-box">
 
-            <div id="statusIcon" class="success-icon">✓</div>
+            <div
+              id="statusIcon"
+              class="success-icon"
+            >
+              ✓
+            </div>
 
             <h1
               id="statusTitle"
@@ -1081,7 +1461,10 @@
 
             <p
               id="statusText"
-              style="color:var(--muted);line-height:1.6;"
+              style="
+                color:var(--muted);
+                line-height:1.6;
+              "
             ></p>
 
             <div
@@ -1090,6 +1473,7 @@
             ></div>
 
             <div style="margin-top:22px;">
+
               <button
                 class="primary-btn"
                 data-go="dashboard"
@@ -1097,70 +1481,147 @@
               >
                 Return to dashboard
               </button>
+
             </div>
 
           </div>
+
         </section>
 
         <!-- REPORTS -->
-        <section id="page-reports" class="page hidden">
+        <section
+          id="page-reports"
+          class="page hidden"
+        >
+
           <div class="page-head">
+
             <div>
-              <h1>Sales report</h1>
+
+              <h1>
+                Sales report
+              </h1>
+
               <p>
                 Understand your sales performance from your real orders.
               </p>
+
             </div>
+
           </div>
 
           <div class="stats">
 
             <div class="stat-card">
-              <div class="stat-label">Paid revenue</div>
-              <div id="reportRevenue" class="stat-value">₦0</div>
+
+              <div class="stat-label">
+                Paid revenue
+              </div>
+
+              <div
+                id="reportRevenue"
+                class="stat-value"
+              >
+                ₦0
+              </div>
+
             </div>
 
             <div class="stat-card">
-              <div class="stat-label">Paid orders</div>
-              <div id="reportPaidCount" class="stat-value">0</div>
+
+              <div class="stat-label">
+                Paid orders
+              </div>
+
+              <div
+                id="reportPaidCount"
+                class="stat-value"
+              >
+                0
+              </div>
+
             </div>
 
             <div class="stat-card">
-              <div class="stat-label">Average order</div>
-              <div id="reportAverage" class="stat-value">₦0</div>
+
+              <div class="stat-label">
+                Average order
+              </div>
+
+              <div
+                id="reportAverage"
+                class="stat-value"
+              >
+                ₦0
+              </div>
+
             </div>
 
             <div class="stat-card">
-              <div class="stat-label">Pending value</div>
-              <div id="reportPending" class="stat-value">₦0</div>
+
+              <div class="stat-label">
+                Pending value
+              </div>
+
+              <div
+                id="reportPending"
+                class="stat-value"
+              >
+                ₦0
+              </div>
+
             </div>
 
           </div>
 
-          <div class="panel" style="margin-top:18px;">
+          <div
+            class="panel"
+            style="margin-top:18px;"
+          >
+
             <div class="panel-head">
+
               <span class="panel-title">
                 Revenue by recent day
               </span>
+
             </div>
 
-            <div id="reportChart" class="chart">
+            <div
+              id="reportChart"
+              class="chart"
+            >
+
               <div class="chart-empty">
                 No paid sales yet
               </div>
+
             </div>
+
           </div>
+
         </section>
 
         <!-- PROFILE -->
-        <section id="page-profile" class="page hidden">
+        <section
+          id="page-profile"
+          class="page hidden"
+        >
+
           <div class="page-head">
+
             <div>
-              <h1>Profile</h1>
+
+              <h1>
+                Profile
+              </h1>
+
               <p>
                 Manage your SellFlow seller information.
               </p>
+
             </div>
+
           </div>
 
           <div class="panel form-card">
@@ -1168,27 +1629,39 @@
             <form id="profileForm">
 
               <div class="field">
+
                 <label for="profileBusiness">
                   Business name
                 </label>
+
                 <input id="profileBusiness" />
+
               </div>
 
               <div class="field">
+
                 <label for="profileFullName">
                   Full name
                 </label>
+
                 <input id="profileFullName" />
+
               </div>
 
               <div class="field">
+
                 <label for="profilePhone">
                   Phone number
                 </label>
+
                 <input id="profilePhone" />
+
               </div>
 
-              <div id="profileMessage" class="hidden"></div>
+              <div
+                id="profileMessage"
+                class="hidden"
+              ></div>
 
               <button
                 class="primary-btn"
@@ -1200,10 +1673,13 @@
             </form>
 
           </div>
+
         </section>
 
       </div>
+
     </main>
+
   </section>
 
   <script>
@@ -1214,29 +1690,27 @@
     const SUPABASE_URL =
       "https://nnkurlmqaytywiayjazq.supabase.co";
 
-    /*
-      Browser-safe publishable key.
-      NEVER put a Supabase service_role/secret key here.
-    */
     const SUPABASE_PUBLISHABLE_KEY =
       "sb_publishable_1AWzTkjd1tqloKJN3XonGQ_p8zDb3B8";
 
     const SELLFLOW_URL =
       "https://sellflow-stack.github.io/SellFlow/";
 
-    const { createClient } = window.supabase;
+    const { createClient } =
+      window.supabase;
 
-    const supabaseClient = createClient(
-      SUPABASE_URL,
-      SUPABASE_PUBLISHABLE_KEY,
-      {
-        auth: {
-          persistSession: true,
-          autoRefreshToken: true,
-          detectSessionInUrl: true
+    const supabaseClient =
+      createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY,
+        {
+          auth: {
+            persistSession: true,
+            autoRefreshToken: true,
+            detectSessionInUrl: true
+          }
         }
-      }
-    );
+      );
 
     /* ==========================================================
        STATE
@@ -1249,33 +1723,127 @@
     let currentPage = "dashboard";
     let currentPaymentOrder = null;
 
-    const $ = (id) => document.getElementById(id);
+    /*
+      Used to distinguish an email-confirmation redirect
+      from a normal login.
+
+      When Supabase confirms an email, it can establish a
+      temporary session from the confirmation link.
+
+      SellFlow should NOT send that user directly to the
+      dashboard.
+
+      Instead:
+      confirmation → Login → Dashboard after correct login
+    */
+
+    let emailConfirmationRedirect = false;
+
+    const $ = (id) =>
+      document.getElementById(id);
+
+    /* ==========================================================
+       AUTH CALLBACK DETECTION
+       ========================================================== */
+
+    function detectEmailConfirmationRedirect() {
+
+      try {
+
+        const params =
+          new URLSearchParams(
+            window.location.search
+          );
+
+        /*
+          Supabase may return:
+          ?code=...
+        */
+
+        if (params.has("code")) {
+          return true;
+        }
+
+        /*
+          Older implicit-flow links may contain:
+          #access_token=...
+          #type=signup
+        */
+
+        const hash =
+          window.location.hash || "";
+
+        if (
+          hash.includes(
+            "access_token="
+          ) &&
+          (
+            hash.includes(
+              "type=signup"
+            ) ||
+            hash.includes(
+              "type=invite"
+            )
+          )
+        ) {
+          return true;
+        }
+
+        return false;
+
+      } catch (error) {
+
+        console.warn(
+          "Could not inspect auth redirect:",
+          error
+        );
+
+        return false;
+      }
+    }
+
+    emailConfirmationRedirect =
+      detectEmailConfirmationRedirect();
 
     /* ==========================================================
        HELPERS
        ========================================================== */
 
     function naira(value) {
-      const number = Number(value || 0);
 
-      return new Intl.NumberFormat("en-NG", {
-        style: "currency",
-        currency: "NGN",
-        maximumFractionDigits: 0
-      }).format(number);
+      const number =
+        Number(value || 0);
+
+      return new Intl.NumberFormat(
+        "en-NG",
+        {
+          style: "currency",
+          currency: "NGN",
+          maximumFractionDigits: 0
+        }
+      ).format(number);
     }
 
     function dateText(value) {
-      if (!value) return "—";
 
-      return new Intl.DateTimeFormat("en-NG", {
-        day: "numeric",
-        month: "short",
-        year: "numeric"
-      }).format(new Date(value));
+      if (!value) {
+        return "—";
+      }
+
+      return new Intl.DateTimeFormat(
+        "en-NG",
+        {
+          day: "numeric",
+          month: "short",
+          year: "numeric"
+        }
+      ).format(
+        new Date(value)
+      );
     }
 
     function escapeHtml(value) {
+
       return String(value ?? "")
         .replaceAll("&", "&amp;")
         .replaceAll("<", "&lt;")
@@ -1284,14 +1852,28 @@
         .replaceAll("'", "&#039;");
     }
 
-    function showMessage(element, text, type = "error") {
-      element.className = `message ${type}`;
-      element.textContent = text;
+    function showMessage(
+      element,
+      text,
+      type = "error"
+    ) {
+
+      element.className =
+        `message ${type}`;
+
+      element.textContent =
+        text;
     }
 
-    function hideMessage(element) {
-      element.className = "hidden";
-      element.textContent = "";
+    function hideMessage(
+      element
+    ) {
+
+      element.className =
+        "hidden";
+
+      element.textContent =
+        "";
     }
 
     function setButtonLoading(
@@ -1299,13 +1881,20 @@
       loading,
       normalText
     ) {
-      button.disabled = loading;
+
+      button.disabled =
+        loading;
+
       button.textContent =
-        loading ? "Please wait..." : normalText;
+        loading
+          ? "Please wait..."
+          : normalText;
     }
 
-    function clearPaymentQuery() {
+    function clearAuthUrl() {
+
       try {
+
         const cleanUrl =
           window.location.origin +
           window.location.pathname;
@@ -1315,7 +1904,32 @@
           document.title,
           cleanUrl
         );
+
       } catch (error) {
+
+        console.warn(
+          "Could not clean auth URL:",
+          error
+        );
+      }
+    }
+
+    function clearPaymentQuery() {
+
+      try {
+
+        const cleanUrl =
+          window.location.origin +
+          window.location.pathname;
+
+        window.history.replaceState(
+          {},
+          document.title,
+          cleanUrl
+        );
+
+      } catch (error) {
+
         console.warn(
           "Could not clean payment URL:",
           error
@@ -1324,154 +1938,268 @@
     }
 
     /* ==========================================================
-       AUTH
+       AUTH UI
        ========================================================== */
 
-    function setAuthMode(mode) {
-      authMode = mode;
+    function setAuthMode(
+      mode
+    ) {
 
-      const signup = mode === "signup";
+      authMode =
+        mode;
 
-      $("authTitle").textContent = signup
-        ? "Welcome to SellFlow"
-        : "Welcome back";
+      const signup =
+        mode === "signup";
 
-      $("authSubtitle").textContent = signup
-        ? "Accept payments, manage orders and track your sales in one place."
-        : "Log in to manage your orders and sales.";
+      $("authTitle").textContent =
+        signup
+          ? "Welcome to SellFlow"
+          : "Welcome back";
 
-      $("signupFields").classList.toggle(
-        "hidden",
-        !signup
+      $("authSubtitle").textContent =
+        signup
+          ? "Accept payments, manage orders and track your sales in one place."
+          : "Log in to manage your orders and sales.";
+
+      $("signupFields")
+        .classList
+        .toggle(
+          "hidden",
+          !signup
+        );
+
+      $("authSubmit").textContent =
+        signup
+          ? "Create SellFlow account"
+          : "Log in";
+
+      $("authSwitchText").textContent =
+        signup
+          ? "Already have an account?"
+          : "Don't have an account?";
+
+      $("authSwitch").textContent =
+        signup
+          ? "Log in"
+          : "Create account";
+
+      hideMessage(
+        $("authMessage")
       );
-
-      $("authSubmit").textContent = signup
-        ? "Create SellFlow account"
-        : "Log in";
-
-      $("authSwitchText").textContent = signup
-        ? "Already have an account?"
-        : "Don't have an account?";
-
-      $("authSwitch").textContent = signup
-        ? "Log in"
-        : "Create account";
-
-      hideMessage($("authMessage"));
     }
 
-    $("authSwitch").addEventListener(
-      "click",
-      () => {
-        setAuthMode(
-          authMode === "signup"
-            ? "login"
-            : "signup"
-        );
-      }
-    );
+    $("authSwitch")
+      .addEventListener(
+        "click",
+        () => {
 
-    $("authForm").addEventListener(
-      "submit",
-      async (event) => {
-        event.preventDefault();
-
-        const email =
-          $("email").value.trim();
-
-        const password =
-          $("password").value;
-
-        hideMessage($("authMessage"));
-
-        if (!email || !password) {
-          showMessage(
-            $("authMessage"),
-            "Enter your email and password."
+          setAuthMode(
+            authMode === "signup"
+              ? "login"
+              : "signup"
           );
 
-          return;
         }
+      );
 
-        const button =
-          $("authSubmit");
+    /* ==========================================================
+       CREATE ACCOUNT / LOGIN
+       ========================================================== */
 
-        setButtonLoading(
-          button,
-          true,
-          authMode === "signup"
-            ? "Create SellFlow account"
-            : "Log in"
-        );
+    $("authForm")
+      .addEventListener(
+        "submit",
+        async (event) => {
 
-        try {
-          if (authMode === "signup") {
+          event.preventDefault();
 
-            const fullName =
-              $("fullName").value.trim();
+          const email =
+            $("email")
+              .value
+              .trim();
 
-            const businessName =
-              $("businessName").value.trim();
+          const password =
+            $("password")
+              .value;
 
-            const phone =
-              $("phone").value.trim();
+          hideMessage(
+            $("authMessage")
+          );
 
-            if (!fullName || !businessName) {
-              throw new Error(
-                "Enter your name and business name."
-              );
+          if (
+            !email ||
+            !password
+          ) {
+
+            showMessage(
+              $("authMessage"),
+              "Enter your email and password."
+            );
+
+            return;
+          }
+
+          const button =
+            $("authSubmit");
+
+          const normalButtonText =
+            authMode === "signup"
+              ? "Create SellFlow account"
+              : "Log in";
+
+          setButtonLoading(
+            button,
+            true,
+            normalButtonText
+          );
+
+          try {
+
+            /* ==================================================
+               SIGNUP
+               ================================================== */
+
+            if (
+              authMode === "signup"
+            ) {
+
+              const fullName =
+                $("fullName")
+                  .value
+                  .trim();
+
+              const businessName =
+                $("businessName")
+                  .value
+                  .trim();
+
+              const phone =
+                $("phone")
+                  .value
+                  .trim();
+
+              if (
+                !fullName ||
+                !businessName
+              ) {
+
+                throw new Error(
+                  "Enter your name and business name."
+                );
+              }
+
+              const {
+                data,
+                error
+              } =
+                await supabaseClient
+                  .auth
+                  .signUp({
+                    email,
+                    password,
+
+                    options: {
+                      emailRedirectTo:
+                        SELLFLOW_URL,
+
+                      data: {
+                        full_name:
+                          fullName,
+
+                        business_name:
+                          businessName,
+
+                        phone
+                      }
+                    }
+                  });
+
+              if (error) {
+                throw error;
+              }
+
+              /*
+                IMPORTANT:
+
+                With email confirmation enabled,
+                Supabase normally returns a user
+                without an active session.
+
+                That means the account exists,
+                but the seller must confirm the
+                email before logging in.
+              */
+
+              if (
+                data?.session
+              ) {
+
+                /*
+                  This can happen if email confirmation
+                  is disabled or the provider returns
+                  an active session.
+
+                  In that case the account is already
+                  authenticated.
+                */
+
+                await loadApp();
+
+              } else {
+
+                /*
+                  This is the normal SellFlow path.
+
+                  Create account
+                  ↓
+                  Confirmation email
+                  ↓
+                  Automatically switch to Login
+                */
+
+                setAuthMode(
+                  "login"
+                );
+
+                $("email").value =
+                  email;
+
+                $("password").value =
+                  "";
+
+                showMessage(
+                  $("authMessage"),
+                  "Account created successfully. Check your email and confirm your SellFlow account before logging in.",
+                  "success"
+                );
+
+                /*
+                  Clear signup-only fields.
+                */
+
+                $("fullName").value =
+                  "";
+
+                $("businessName").value =
+                  "";
+
+                $("phone").value =
+                  "";
+              }
+
+              return;
             }
 
-            const redirectUrl =
-              SELLFLOW_URL;
+            /* ==================================================
+               LOGIN
+               ================================================== */
 
             const {
               data,
               error
             } =
-              await supabaseClient.auth.signUp({
-                email,
-                password,
-
-                options: {
-                  emailRedirectTo:
-                    redirectUrl,
-
-                  data: {
-                    full_name:
-                      fullName,
-
-                    business_name:
-                      businessName,
-
-                    phone
-                  }
-                }
-              });
-
-            if (error) {
-              throw error;
-            }
-
-            if (data.session) {
-
-              await loadApp();
-
-            } else {
-
-              showMessage(
-                $("authMessage"),
-                "Account created. Check your email to confirm your SellFlow account.",
-                "success"
-              );
-            }
-
-          } else {
-
-            const {
-              error
-            } =
-              await supabaseClient.auth
+              await supabaseClient
+                .auth
                 .signInWithPassword({
                   email,
                   password
@@ -1481,52 +2209,105 @@
               throw error;
             }
 
+            if (
+              !data?.session
+            ) {
+
+              throw new Error(
+                "Unable to create a login session."
+              );
+            }
+
+            /*
+              Correct login:
+              Login → Dashboard
+            */
+
             await loadApp();
+
+          } catch (error) {
+
+            console.error(
+              "Authentication error:",
+              error
+            );
+
+            let message =
+              error?.message ||
+              "Authentication failed.";
+
+            /*
+              Make common Supabase email-confirmation
+              errors more useful to the seller.
+            */
+
+            if (
+              message
+                .toLowerCase()
+                .includes(
+                  "email not confirmed"
+                )
+            ) {
+
+              message =
+                "Please confirm your email before logging in.";
+            }
+
+            showMessage(
+              $("authMessage"),
+              message
+            );
+
+          } finally {
+
+            setButtonLoading(
+              button,
+              false,
+              normalButtonText
+            );
           }
 
-        } catch (error) {
+        }
+      );
 
-          console.error(error);
+    /* ==========================================================
+       LOGOUT
+       ========================================================== */
 
-          showMessage(
-            $("authMessage"),
-            error.message ||
-              "Authentication failed."
-          );
+    $("logoutBtn")
+      .addEventListener(
+        "click",
+        async () => {
 
-        } finally {
+          await supabaseClient
+            .auth
+            .signOut();
 
-          setButtonLoading(
-            button,
-            false,
-            authMode === "signup"
-              ? "Create SellFlow account"
-              : "Log in"
+          currentUser =
+            null;
+
+          profile =
+            null;
+
+          orders =
+            [];
+
+          currentPaymentOrder =
+            null;
+
+          $("appScreen")
+            .classList
+            .add("hidden");
+
+          $("authScreen")
+            .classList
+            .remove("hidden");
+
+          setAuthMode(
+            "login"
           );
         }
-      }
-    );
-
-    $("logoutBtn").addEventListener(
-      "click",
-      async () => {
-
-        await supabaseClient.auth.signOut();
-
-        currentUser = null;
-        profile = null;
-        orders = [];
-        currentPaymentOrder = null;
-
-        $("appScreen")
-          .classList.add("hidden");
-
-        $("authScreen")
-          .classList.remove("hidden");
-
-        setAuthMode("login");
-      }
-    );
+      );
 
     /* ==========================================================
        APP LOAD
@@ -1540,29 +2321,43 @@
         },
         error
       } =
-        await supabaseClient.auth.getUser();
+        await supabaseClient
+          .auth
+          .getUser();
 
-      if (error || !user) {
+      if (
+        error ||
+        !user
+      ) {
 
         $("appScreen")
-          .classList.add("hidden");
+          .classList
+          .add("hidden");
 
         $("authScreen")
-          .classList.remove("hidden");
+          .classList
+          .remove("hidden");
+
+        setAuthMode(
+          "login"
+        );
 
         return;
       }
 
-      currentUser = user;
+      currentUser =
+        user;
 
       await loadProfile();
       await loadOrders();
 
       $("authScreen")
-        .classList.add("hidden");
+        .classList
+        .add("hidden");
 
       $("appScreen")
-        .classList.remove("hidden");
+        .classList
+        .remove("hidden");
 
       updateSidebar();
       renderAll();
@@ -1576,7 +2371,9 @@
         params.get("reference") ||
         params.get("trxref");
 
-      if (paymentReference) {
+      if (
+        paymentReference
+      ) {
 
         await handlePaystackCallback(
           paymentReference
@@ -1611,20 +2408,33 @@
 
       profile =
         data || {
-          id: currentUser.id,
-          business_name: "",
-          full_name: "",
-          phone: ""
+          id:
+            currentUser.id,
+
+          business_name:
+            "",
+
+          full_name:
+            "",
+
+          phone:
+            ""
         };
 
-      $("profileBusiness").value =
-        profile.business_name || "";
+      $("profileBusiness")
+        .value =
+        profile.business_name ||
+        "";
 
-      $("profileFullName").value =
-        profile.full_name || "";
+      $("profileFullName")
+        .value =
+        profile.full_name ||
+        "";
 
-      $("profilePhone").value =
-        profile.phone || "";
+      $("profilePhone")
+        .value =
+        profile.phone ||
+        "";
     }
 
     async function loadOrders() {
@@ -1643,7 +2453,8 @@
           .order(
             "created_at",
             {
-              ascending: false
+              ascending:
+                false
             }
           );
 
@@ -1654,12 +2465,15 @@
           error
         );
 
-        orders = [];
+        orders =
+          [];
 
         return;
       }
 
-      orders = data || [];
+      orders =
+        data ||
+        [];
     }
 
     /* ==========================================================
@@ -1667,63 +2481,105 @@
        ========================================================== */
 
     const pageTitles = {
-      dashboard: "Dashboard",
-      orders: "Orders",
-      "create-order": "Create order",
-      "payment-link": "Payment link",
-      "payment-status": "Payment status",
-      reports: "Sales report",
-      profile: "Profile"
+
+      dashboard:
+        "Dashboard",
+
+      orders:
+        "Orders",
+
+      "create-order":
+        "Create order",
+
+      "payment-link":
+        "Payment link",
+
+      "payment-status":
+        "Payment status",
+
+      reports:
+        "Sales report",
+
+      profile:
+        "Profile"
     };
 
-    function showPage(page) {
+    function showPage(
+      page
+    ) {
 
-      currentPage = page;
+      currentPage =
+        page;
 
       document
-        .querySelectorAll(".page")
-        .forEach((element) => {
-          element.classList.add(
-            "hidden"
-          );
-        });
+        .querySelectorAll(
+          ".page"
+        )
+        .forEach(
+          (element) => {
+
+            element.classList
+              .add("hidden");
+
+          }
+        );
 
       const target =
         $("page-" + page);
 
       if (target) {
-        target.classList.remove(
-          "hidden"
-        );
+
+        target.classList
+          .remove("hidden");
       }
 
-      $("topbarTitle").textContent =
+      $("topbarTitle")
+        .textContent =
         pageTitles[page] ||
         "SellFlow";
 
       document
-        .querySelectorAll(".nav button")
-        .forEach((button) => {
+        .querySelectorAll(
+          ".nav button"
+        )
+        .forEach(
+          (button) => {
 
-          button.classList.toggle(
-            "active",
-            button.dataset.page ===
-              page
-          );
-        });
+            button.classList
+              .toggle(
+                "active",
+                button.dataset.page ===
+                  page
+              );
+
+          }
+        );
 
       $("sidebar")
-        .classList.remove("open");
+        .classList
+        .remove("open");
 
-      if (page === "dashboard") {
+      if (
+        page ===
+        "dashboard"
+      ) {
+
         renderDashboard();
       }
 
-      if (page === "orders") {
+      if (
+        page ===
+        "orders"
+      ) {
+
         renderOrders();
       }
 
-      if (page === "reports") {
+      if (
+        page ===
+        "reports"
+      ) {
+
         renderReports();
       }
     }
@@ -1737,7 +2593,9 @@
             "[data-go]"
           );
 
-        if (navigation) {
+        if (
+          navigation
+        ) {
 
           showPage(
             navigation.dataset.go
@@ -1749,7 +2607,9 @@
             ".nav button"
           );
 
-        if (navButton) {
+        if (
+          navButton
+        ) {
 
           showPage(
             navButton.dataset.page
@@ -1758,20 +2618,31 @@
       }
     );
 
-    $("topCreateBtn").addEventListener(
-      "click",
-      () => {
-        showPage("create-order");
-      }
-    );
+    $("topCreateBtn")
+      .addEventListener(
+        "click",
+        () => {
 
-    $("mobileMenuBtn").addEventListener(
-      "click",
-      () => {
-        $("sidebar")
-          .classList.toggle("open");
-      }
-    );
+          showPage(
+            "create-order"
+          );
+
+        }
+      );
+
+    $("mobileMenuBtn")
+      .addEventListener(
+        "click",
+        () => {
+
+          $("sidebar")
+            .classList
+            .toggle(
+              "open"
+            );
+
+        }
+      );
 
     /* ==========================================================
        DASHBOARD
@@ -1782,33 +2653,43 @@
       const paid =
         orders.filter(
           (order) =>
-            order.status === "paid"
+            order.status ===
+            "paid"
         );
 
       const pending =
         orders.filter(
           (order) =>
-            order.status === "pending"
+            order.status ===
+            "pending"
         );
 
       return {
 
         totalSales:
           paid.reduce(
-            (sum, order) =>
+            (
+              sum,
+              order
+            ) =>
               sum +
               Number(
-                order.amount || 0
+                order.amount ||
+                  0
               ),
             0
           ),
 
         pendingSales:
           pending.reduce(
-            (sum, order) =>
+            (
+              sum,
+              order
+            ) =>
               sum +
               Number(
-                order.amount || 0
+                order.amount ||
+                  0
               ),
             0
           ),
@@ -1826,18 +2707,22 @@
       const stats =
         calculateStats();
 
-      $("totalSales").textContent =
+      $("totalSales")
+        .textContent =
         naira(
           stats.totalSales
         );
 
-      $("totalOrders").textContent =
+      $("totalOrders")
+        .textContent =
         stats.totalOrders;
 
-      $("paidOrders").textContent =
+      $("paidOrders")
+        .textContent =
         stats.paidOrders;
 
-      $("pendingSales").textContent =
+      $("pendingSales")
+        .textContent =
         naira(
           stats.pendingSales
         );
@@ -1851,7 +2736,8 @@
 
     function getLastSevenDays() {
 
-      const days = [];
+      const days =
+        [];
 
       for (
         let i = 6;
@@ -1870,10 +2756,13 @@
         );
 
         date.setDate(
-          date.getDate() - i
+          date.getDate() -
+            i
         );
 
-        days.push(date);
+        days.push(
+          date
+        );
       }
 
       return days;
@@ -1882,59 +2771,68 @@
     function getDailyPaidTotals() {
 
       return getLastSevenDays()
-        .map((date) => {
+        .map(
+          (date) => {
 
-          const year =
-            date.getFullYear();
+            const year =
+              date.getFullYear();
 
-          const month =
-            date.getMonth();
+            const month =
+              date.getMonth();
 
-          const day =
-            date.getDate();
+            const day =
+              date.getDate();
 
-          const total =
-            orders
-              .filter((order) => {
+            const total =
+              orders
+                .filter(
+                  (order) => {
 
-                if (
-                  order.status !==
-                  "paid"
-                ) {
-                  return false;
-                }
+                    if (
+                      order.status !==
+                      "paid"
+                    ) {
 
-                const orderDate =
-                  new Date(
-                    order.paid_at ||
-                    order.created_at
-                  );
+                      return false;
+                    }
 
-                return (
-                  orderDate.getFullYear() ===
-                    year &&
+                    const orderDate =
+                      new Date(
+                        order.paid_at ||
+                        order.created_at
+                      );
 
-                  orderDate.getMonth() ===
-                    month &&
+                    return (
+                      orderDate.getFullYear() ===
+                        year &&
 
-                  orderDate.getDate() ===
-                    day
+                      orderDate.getMonth() ===
+                        month &&
+
+                      orderDate.getDate() ===
+                        day
+                    );
+                  }
+                )
+                .reduce(
+                  (
+                    sum,
+                    order
+                  ) =>
+                    sum +
+                    Number(
+                      order.amount ||
+                        0
+                    ),
+                  0
                 );
-              })
-              .reduce(
-                (sum, order) =>
-                  sum +
-                  Number(
-                    order.amount || 0
-                  ),
-                0
-              );
 
-          return {
-            date,
-            total
-          };
-        });
+            return {
+              date,
+              total
+            };
+          }
+        );
     }
 
     function renderSalesChart(
@@ -1963,52 +2861,56 @@
 
       container.innerHTML =
         data
-          .map((item) => {
+          .map(
+            (item) => {
 
-            const height =
-              Math.max(
-                3,
-                Math.round(
-                  (item.total /
-                    max) *
+              const height =
+                Math.max(
+                  3,
+                  Math.round(
+                    (
+                      item.total /
+                      max
+                    ) *
                     100
-                )
-              );
-
-            const label =
-              new Intl.DateTimeFormat(
-                "en-NG",
-                {
-                  weekday:
-                    "short"
-                }
-              ).format(
-                item.date
-              );
-
-            return `
-              <div
-                class="bar-wrap"
-                title="${escapeHtml(
-                  naira(
-                    item.total
                   )
-                )}"
-              >
+                );
+
+              const label =
+                new Intl.DateTimeFormat(
+                  "en-NG",
+                  {
+                    weekday:
+                      "short"
+                  }
+                ).format(
+                  item.date
+                );
+
+              return `
                 <div
-                  class="bar"
-                  style="height:${height}%"
-                  aria-label="${escapeHtml(
-                    label
-                  )} ${escapeHtml(
+                  class="bar-wrap"
+                  title="${escapeHtml(
                     naira(
                       item.total
                     )
                   )}"
-                ></div>
-              </div>
-            `;
-          })
+                >
+                  <div
+                    class="bar"
+                    style="height:${height}%"
+                    aria-label="${escapeHtml(
+                      label
+                    )} ${escapeHtml(
+                      naira(
+                        item.total
+                      )
+                    )}"
+                  ></div>
+                </div>
+              `;
+            }
+          )
           .join("");
     }
 
@@ -2018,9 +2920,14 @@
         $("recentOrders");
 
       const recent =
-        orders.slice(0, 5);
+        orders.slice(
+          0,
+          5
+        );
 
-      if (!recent.length) {
+      if (
+        !recent.length
+      ) {
 
         container.innerHTML =
           '<div class="empty">Your recent orders will appear here.</div>';
@@ -2030,8 +2937,11 @@
 
       container.innerHTML = `
         <div class="table-wrap">
+
           <table>
+
             <thead>
+
               <tr>
                 <th>Customer</th>
                 <th>Product</th>
@@ -2039,19 +2949,28 @@
                 <th>Status</th>
                 <th>Date</th>
               </tr>
+
             </thead>
 
             <tbody>
+
               ${recent
-                .map(orderRow)
+                .map(
+                  orderRow
+                )
                 .join("")}
+
             </tbody>
+
           </table>
+
         </div>
       `;
     }
 
-    function orderRow(order) {
+    function orderRow(
+      order
+    ) {
 
       return `
         <tr>
@@ -2077,6 +2996,7 @@
           </td>
 
           <td>
+
             <span
               class="status ${escapeHtml(
                 order.status
@@ -2086,6 +3006,7 @@
                 order.status
               )}
             </span>
+
           </td>
 
           <td>
@@ -2109,7 +3030,9 @@
       const container =
         $("ordersTable");
 
-      if (!orders.length) {
+      if (
+        !orders.length
+      ) {
 
         container.innerHTML =
           '<div class="empty">No orders yet. Create your first SellFlow order.</div>';
@@ -2123,6 +3046,7 @@
           <table>
 
             <thead>
+
               <tr>
                 <th>Customer</th>
                 <th>Product</th>
@@ -2131,6 +3055,7 @@
                 <th>Created</th>
                 <th>Action</th>
               </tr>
+
             </thead>
 
             <tbody>
@@ -2162,6 +3087,7 @@
                       </td>
 
                       <td>
+
                         <span
                           class="status ${escapeHtml(
                             order.status
@@ -2171,6 +3097,7 @@
                             order.status
                           )}
                         </span>
+
                       </td>
 
                       <td>
@@ -2228,156 +3155,167 @@
        CREATE ORDER
        ========================================================== */
 
-    $("orderForm").addEventListener(
-      "submit",
-      async (event) => {
+    $("orderForm")
+      .addEventListener(
+        "submit",
+        async (event) => {
 
-        event.preventDefault();
+          event.preventDefault();
 
-        if (!currentUser) {
+          if (
+            !currentUser
+          ) {
 
-          showPage("dashboard");
+            showPage(
+              "dashboard"
+            );
 
-          return;
-        }
-
-        const customerName =
-          $("customerName")
-            .value
-            .trim();
-
-        const customerEmail =
-          $("customerEmail")
-            .value
-            .trim();
-
-        const customerPhone =
-          $("customerPhone")
-            .value
-            .trim();
-
-        const productName =
-          $("productName")
-            .value
-            .trim();
-
-        const amount =
-          Number(
-            $("amount").value
-          );
-
-        if (
-          !customerName ||
-          !customerEmail ||
-          !productName
-        ) {
-
-          showMessage(
-            $("orderMessage"),
-            "Complete the required customer and product fields."
-          );
-
-          return;
-        }
-
-        if (
-          !Number.isFinite(amount) ||
-          amount <= 0
-        ) {
-
-          showMessage(
-            $("orderMessage"),
-            "Enter a valid amount greater than ₦0."
-          );
-
-          return;
-        }
-
-        hideMessage(
-          $("orderMessage")
-        );
-
-        const button =
-          $("createOrderBtn");
-
-        setButtonLoading(
-          button,
-          true,
-          "Create order"
-        );
-
-        try {
-
-          const {
-            data,
-            error
-          } =
-            await supabaseClient
-              .from("orders")
-              .insert({
-
-                seller_id:
-                  currentUser.id,
-
-                customer_name:
-                  customerName,
-
-                customer_email:
-                  customerEmail,
-
-                customer_phone:
-                  customerPhone,
-
-                product_name:
-                  productName,
-
-                amount,
-
-                status:
-                  "pending"
-
-              })
-              .select()
-              .single();
-
-          if (error) {
-            throw error;
+            return;
           }
 
-          orders.unshift(data);
+          const customerName =
+            $("customerName")
+              .value
+              .trim();
 
-          $("orderForm").reset();
+          const customerEmail =
+            $("customerEmail")
+              .value
+              .trim();
 
-          currentPaymentOrder =
-            data;
+          const customerPhone =
+            $("customerPhone")
+              .value
+              .trim();
 
-          await preparePayment(
-            data.id
+          const productName =
+            $("productName")
+              .value
+              .trim();
+
+          const amount =
+            Number(
+              $("amount")
+                .value
+            );
+
+          if (
+            !customerName ||
+            !customerEmail ||
+            !productName
+          ) {
+
+            showMessage(
+              $("orderMessage"),
+              "Complete the required customer and product fields."
+            );
+
+            return;
+          }
+
+          if (
+            !Number.isFinite(
+              amount
+            ) ||
+            amount <= 0
+          ) {
+
+            showMessage(
+              $("orderMessage"),
+              "Enter a valid amount greater than ₦0."
+            );
+
+            return;
+          }
+
+          hideMessage(
+            $("orderMessage")
           );
 
-        } catch (error) {
-
-          console.error(
-            "Create order error:",
-            error
-          );
-
-          showMessage(
-            $("orderMessage"),
-            error.message ||
-              "Unable to create order."
-          );
-
-        } finally {
+          const button =
+            $("createOrderBtn");
 
           setButtonLoading(
             button,
-            false,
+            true,
             "Create order"
           );
+
+          try {
+
+            const {
+              data,
+              error
+            } =
+              await supabaseClient
+                .from("orders")
+                .insert({
+
+                  seller_id:
+                    currentUser.id,
+
+                  customer_name:
+                    customerName,
+
+                  customer_email:
+                    customerEmail,
+
+                  customer_phone:
+                    customerPhone,
+
+                  product_name:
+                    productName,
+
+                  amount,
+
+                  status:
+                    "pending"
+
+                })
+                .select()
+                .single();
+
+            if (error) {
+              throw error;
+            }
+
+            orders.unshift(
+              data
+            );
+
+            $("orderForm")
+              .reset();
+
+            currentPaymentOrder =
+              data;
+
+            await preparePayment(
+              data.id
+            );
+
+          } catch (error) {
+
+            console.error(
+              "Create order error:",
+              error
+            );
+
+            showMessage(
+              $("orderMessage"),
+              error.message ||
+                "Unable to create order."
+            );
+
+          } finally {
+
+            setButtonLoading(
+              button,
+              false,
+              "Create order"
+            );
+          }
         }
-      }
-    );
+      );
 
     /* ==========================================================
        PAYSTACK — INITIALIZE
@@ -2390,7 +3328,8 @@
       const order =
         orders.find(
           (item) =>
-            item.id === orderId
+            item.id ===
+            orderId
         );
 
       if (!order) {
@@ -2434,7 +3373,8 @@
           error:
             sessionError
         } =
-          await supabaseClient.auth
+          await supabaseClient
+            .auth
             .getSession();
 
         if (
@@ -2492,14 +3432,6 @@
 
           return;
         }
-
-        /*
-          The Edge Function has already saved:
-          - payment_reference
-          - payment_link
-
-          into the real Supabase order.
-        */
 
         order.payment_link =
           data.authorization_url;
@@ -2591,8 +3523,8 @@
 
       $("paymentLinkInput")
         .value =
-          order.payment_link ||
-          "";
+        order.payment_link ||
+        "";
 
       $("payNowBtn").onclick =
         () => {
@@ -2648,13 +3580,15 @@
 
             $("copyPaymentBtn")
               .textContent =
-                "Copied";
+              "Copied";
 
             setTimeout(
               () => {
+
                 $("copyPaymentBtn")
                   .textContent =
-                    "Copy";
+                  "Copy";
+
               },
               1500
             );
@@ -2675,7 +3609,7 @@
 
             $("copyPaymentBtn")
               .textContent =
-                "Copied";
+              "Copied";
           }
         }
       );
@@ -2693,15 +3627,16 @@
       );
 
       $("statusIcon")
-        .textContent = "…";
+        .textContent =
+        "…";
 
       $("statusTitle")
         .textContent =
-          "Verifying payment";
+        "Verifying payment";
 
       $("statusText")
         .textContent =
-          "SellFlow is securely checking this transaction with Paystack.";
+        "SellFlow is securely checking this transaction with Paystack.";
 
       $("statusDetails")
         .innerHTML = `
@@ -2716,12 +3651,14 @@
               line-height:1.5;
             "
           >
+
             Reference:
             <strong>
               ${escapeHtml(
                 reference
               )}
             </strong>
+
           </div>
 
         `;
@@ -2735,7 +3672,8 @@
           error:
             sessionError
         } =
-          await supabaseClient.auth
+          await supabaseClient
+            .auth
             .getSession();
 
         if (
@@ -2744,15 +3682,16 @@
         ) {
 
           $("statusIcon")
-            .textContent = "×";
+            .textContent =
+            "×";
 
           $("statusTitle")
             .textContent =
-              "Session expired";
+            "Session expired";
 
           $("statusText")
             .textContent =
-              "Your SellFlow session expired before payment verification could complete.";
+            "Your SellFlow session expired before payment verification could complete.";
 
           $("statusDetails")
             .innerHTML = `
@@ -2777,18 +3716,6 @@
           return;
         }
 
-        /*
-          IMPORTANT:
-          The browser does NOT mark the order as paid.
-
-          verify-payment:
-          1. Checks the Paystack transaction.
-          2. Confirms the transaction succeeded.
-          3. Confirms the SellFlow order belongs to this seller.
-          4. Confirms the amount matches.
-          5. Updates the order to "paid".
-        */
-
         const {
           data,
           error
@@ -2812,15 +3739,16 @@
           );
 
           $("statusIcon")
-            .textContent = "×";
+            .textContent =
+            "×";
 
           $("statusTitle")
             .textContent =
-              "Payment verification failed";
+            "Payment verification failed";
 
           $("statusText")
             .textContent =
-              "SellFlow could not complete payment verification.";
+            "SellFlow could not complete payment verification.";
 
           $("statusDetails")
             .innerHTML = `
@@ -2859,13 +3787,10 @@
           return;
         }
 
-        /*
-          Successful verification.
-        */
-
         if (
           data &&
-          data.verified === true &&
+          data.verified ===
+            true &&
           (
             data.status ===
               "paid" ||
@@ -2873,12 +3798,6 @@
               "paid"
           )
         ) {
-
-          /*
-            Reload the real database data.
-            This ensures the dashboard does not
-            rely on browser-side assumptions.
-          */
 
           await loadOrders();
 
@@ -2893,15 +3812,16 @@
             );
 
           $("statusIcon")
-            .textContent = "✓";
+            .textContent =
+            "✓";
 
           $("statusTitle")
             .textContent =
-              "Payment confirmed";
+            "Payment confirmed";
 
           $("statusText")
             .textContent =
-              "Payment was successfully verified with Paystack and the order has been marked as paid.";
+            "Payment was successfully verified with Paystack and the order has been marked as paid.";
 
           $("statusDetails")
             .innerHTML = `
@@ -2939,6 +3859,7 @@
                       >
 
                         <div>
+
                           <span
                             style="
                               color:var(--muted);
@@ -2950,9 +3871,11 @@
                           ${escapeHtml(
                             verifiedOrder.customer_name
                           )}
+
                         </div>
 
                         <div>
+
                           <span
                             style="
                               color:var(--muted);
@@ -2966,9 +3889,11 @@
                               verifiedOrder.amount
                             )
                           )}
+
                         </div>
 
                         <div>
+
                           <span
                             style="
                               color:var(--muted);
@@ -2982,9 +3907,11 @@
                           >
                             PAID
                           </span>
+
                         </div>
 
                         <div>
+
                           <span
                             style="
                               color:var(--muted);
@@ -2996,6 +3923,7 @@
                           ${escapeHtml(
                             reference
                           )}
+
                         </div>
 
                       </div>
@@ -3019,22 +3947,18 @@
           return;
         }
 
-        /*
-          Paystack verification completed but
-          the transaction is not successful.
-        */
-
         $("statusIcon")
-          .textContent = "…";
+          .textContent =
+          "…";
 
         $("statusTitle")
           .textContent =
-            "Payment not completed";
+          "Payment not completed";
 
         $("statusText")
           .textContent =
-            data?.message ||
-            "Paystack has not confirmed this transaction as successful.";
+          data?.message ||
+          "Paystack has not confirmed this transaction as successful.";
 
         $("statusDetails")
           .innerHTML = `
@@ -3075,15 +3999,16 @@
         );
 
         $("statusIcon")
-          .textContent = "×";
+          .textContent =
+          "×";
 
         $("statusTitle")
           .textContent =
-            "Unable to verify payment";
+          "Unable to verify payment";
 
         $("statusText")
           .textContent =
-            "SellFlow could not complete the payment verification request.";
+          "SellFlow could not complete the payment verification request.";
 
         $("statusDetails")
           .innerHTML = `
@@ -3129,7 +4054,8 @@
       const order =
         orders.find(
           (item) =>
-            item.id === orderId
+            item.id ===
+            orderId
         );
 
       if (!order) {
@@ -3142,21 +4068,24 @@
 
       $("statusIcon")
         .textContent =
-          order.status === "paid"
-            ? "✓"
-            : "…";
+        order.status ===
+          "paid"
+          ? "✓"
+          : "…";
 
       $("statusTitle")
         .textContent =
-          order.status === "paid"
-            ? "Payment confirmed"
-            : "Payment pending";
+        order.status ===
+          "paid"
+          ? "Payment confirmed"
+          : "Payment pending";
 
       $("statusText")
         .textContent =
-          order.status === "paid"
-            ? "This order has been recorded as paid."
-            : "This order is waiting for payment.";
+        order.status ===
+          "paid"
+          ? "This order has been recorded as paid."
+          : "This order is waiting for payment.";
 
       $("statusDetails")
         .innerHTML = `
@@ -3190,6 +4119,7 @@
             >
 
               <div>
+
                 <span
                   style="color:var(--muted);"
                 >
@@ -3199,9 +4129,11 @@
                 ${escapeHtml(
                   order.customer_name
                 )}
+
               </div>
 
               <div>
+
                 <span
                   style="color:var(--muted);"
                 >
@@ -3213,9 +4145,11 @@
                     order.amount
                   )
                 )}
+
               </div>
 
               <div>
+
                 <span
                   style="color:var(--muted);"
                 >
@@ -3231,9 +4165,11 @@
                     order.status
                   )}
                 </span>
+
               </div>
 
               <div>
+
                 <span
                   style="color:var(--muted);"
                 >
@@ -3245,6 +4181,7 @@
                     order.created_at
                   )
                 )}
+
               </div>
 
               ${
@@ -3252,6 +4189,7 @@
                   ? `
 
                     <div>
+
                       <span
                         style="color:var(--muted);"
                       >
@@ -3261,6 +4199,7 @@
                       ${escapeHtml(
                         order.payment_reference
                       )}
+
                     </div>
 
                   `
@@ -3272,6 +4211,7 @@
                   ? `
 
                     <div>
+
                       <span
                         style="color:var(--muted);"
                       >
@@ -3283,6 +4223,7 @@
                           order.paid_at
                         )
                       )}
+
                     </div>
 
                   `
@@ -3307,55 +4248,72 @@
       const paid =
         orders.filter(
           (order) =>
-            order.status === "paid"
+            order.status ===
+            "paid"
         );
 
       const pending =
         orders.filter(
           (order) =>
-            order.status === "pending"
+            order.status ===
+            "pending"
         );
 
       const revenue =
         paid.reduce(
-          (sum, order) =>
+          (
+            sum,
+            order
+          ) =>
             sum +
             Number(
-              order.amount || 0
+              order.amount ||
+                0
             ),
           0
         );
 
       const pendingValue =
         pending.reduce(
-          (sum, order) =>
+          (
+            sum,
+            order
+          ) =>
             sum +
             Number(
-              order.amount || 0
+              order.amount ||
+                0
             ),
           0
         );
 
       const average =
         paid.length
-          ? revenue / paid.length
+          ? revenue /
+            paid.length
           : 0;
 
       $("reportRevenue")
         .textContent =
-          naira(revenue);
+        naira(
+          revenue
+        );
 
       $("reportPaidCount")
         .textContent =
-          paid.length;
+        paid.length;
 
       $("reportAverage")
         .textContent =
-          naira(average);
+        naira(
+          average
+        );
 
       $("reportPending")
         .textContent =
-          naira(pendingValue);
+        naira(
+          pendingValue
+        );
 
       renderSalesChart(
         $("reportChart")
@@ -3366,87 +4324,93 @@
        PROFILE
        ========================================================== */
 
-    $("profileForm").addEventListener(
-      "submit",
-      async (event) => {
+    $("profileForm")
+      .addEventListener(
+        "submit",
+        async (event) => {
 
-        event.preventDefault();
+          event.preventDefault();
 
-        if (!currentUser) {
-          return;
-        }
-
-        const businessName =
-          $("profileBusiness")
-            .value
-            .trim();
-
-        const fullName =
-          $("profileFullName")
-            .value
-            .trim();
-
-        const phone =
-          $("profilePhone")
-            .value
-            .trim();
-
-        hideMessage(
-          $("profileMessage")
-        );
-
-        try {
-
-          const {
-            data,
-            error
-          } =
-            await supabaseClient
-              .from("profiles")
-              .update({
-
-                business_name:
-                  businessName,
-
-                full_name:
-                  fullName,
-
-                phone
-
-              })
-              .eq(
-                "id",
-                currentUser.id
-              )
-              .select()
-              .single();
-
-          if (error) {
-            throw error;
+          if (
+            !currentUser
+          ) {
+            return;
           }
 
-          profile = data;
+          const businessName =
+            $("profileBusiness")
+              .value
+              .trim();
 
-          updateSidebar();
+          const fullName =
+            $("profileFullName")
+              .value
+              .trim();
 
-          showMessage(
-            $("profileMessage"),
-            "Profile updated successfully.",
-            "success"
+          const phone =
+            $("profilePhone")
+              .value
+              .trim();
+
+          hideMessage(
+            $("profileMessage")
           );
 
-        } catch (error) {
+          try {
 
-          console.error(error);
+            const {
+              data,
+              error
+            } =
+              await supabaseClient
+                .from("profiles")
+                .update({
 
-          showMessage(
-            $("profileMessage"),
-            error.message ||
-              "Unable to update profile."
-          );
+                  business_name:
+                    businessName,
+
+                  full_name:
+                    fullName,
+
+                  phone
+
+                })
+                .eq(
+                  "id",
+                  currentUser.id
+                )
+                .select()
+                .single();
+
+            if (error) {
+              throw error;
+            }
+
+            profile =
+              data;
+
+            updateSidebar();
+
+            showMessage(
+              $("profileMessage"),
+              "Profile updated successfully.",
+              "success"
+            );
+
+          } catch (error) {
+
+            console.error(
+              error
+            );
+
+            showMessage(
+              $("profileMessage"),
+              error.message ||
+                "Unable to update profile."
+            );
+          }
         }
-      }
-    );
+      );
 
     /* ==========================================================
        SIDEBAR
@@ -3456,13 +4420,13 @@
 
       $("sidebarBusiness")
         .textContent =
-          profile?.business_name ||
-          "SellFlow Seller";
+        profile?.business_name ||
+        "SellFlow Seller";
 
       $("sidebarEmail")
         .textContent =
-          currentUser?.email ||
-          "";
+        currentUser?.email ||
+        "";
     }
 
     /* ==========================================================
@@ -3484,48 +4448,158 @@
        AUTH STATE
        ========================================================== */
 
-    supabaseClient.auth.onAuthStateChange(
-      async (
-        event,
-        session
-      ) => {
+    supabaseClient.auth
+      .onAuthStateChange(
+        async (
+          event,
+          session
+        ) => {
 
-        if (
-          event ===
-            "SIGNED_IN" &&
-          session?.user
-        ) {
+          /*
+            EMAIL CONFIRMATION
 
-          currentUser =
-            session.user;
+            If Supabase created a temporary authenticated
+            session as part of email confirmation, don't
+            send the user to the dashboard.
+
+            Instead:
+            confirmation → Login
+          */
 
           if (
-            $("appScreen")
-              .classList
-              .contains("hidden")
+            event ===
+              "SIGNED_IN" &&
+            session?.user
           ) {
 
-            await loadApp();
+            if (
+              emailConfirmationRedirect
+            ) {
+
+              /*
+                Remove the temporary session.
+
+                Delay the signOut slightly so we don't
+                interfere with Supabase's internal auth
+                event processing.
+              */
+
+              setTimeout(
+                async () => {
+
+                  try {
+
+                    await supabaseClient
+                      .auth
+                      .signOut();
+
+                  } catch (error) {
+
+                    console.warn(
+                      "Confirmation session cleanup failed:",
+                      error
+                    );
+                  }
+
+                  currentUser =
+                    null;
+
+                  profile =
+                    null;
+
+                  orders =
+                    [];
+
+                  $("appScreen")
+                    .classList
+                    .add(
+                      "hidden"
+                    );
+
+                  $("authScreen")
+                    .classList
+                    .remove(
+                      "hidden"
+                    );
+
+                  setAuthMode(
+                    "login"
+                  );
+
+                  showMessage(
+                    $("authMessage"),
+                    "Email confirmed successfully. You can now log in to your SellFlow account.",
+                    "success"
+                  );
+
+                  clearAuthUrl();
+
+                  emailConfirmationRedirect =
+                    false;
+
+                },
+                100
+              );
+
+              return;
+            }
+
+            /*
+              Normal login:
+
+              Login → Dashboard
+            */
+
+            currentUser =
+              session.user;
+
+            if (
+              $("appScreen")
+                .classList
+                .contains(
+                  "hidden"
+                )
+            ) {
+
+              await loadApp();
+            }
+
+            return;
           }
+
+          if (
+            event ===
+              "SIGNED_OUT"
+          ) {
+
+            currentUser =
+              null;
+
+            profile =
+              null;
+
+            orders =
+              [];
+
+            $("appScreen")
+              .classList
+              .add(
+                "hidden"
+              );
+
+            $("authScreen")
+              .classList
+              .remove(
+                "hidden"
+              );
+
+            setAuthMode(
+              "login"
+            );
+          }
+
         }
-
-        if (
-          event ===
-            "SIGNED_OUT"
-        ) {
-
-          $("appScreen")
-            .classList
-            .add("hidden");
-
-          $("authScreen")
-            .classList
-            .remove("hidden");
-
-          setAuthMode("login");
-        }
-      }
-    );
+      );
 
     /* ==========================================================
        INITIAL BOOT
@@ -3533,26 +4607,65 @@
 
     (async function boot() {
 
-      setAuthMode(
-        "signup"
-      );
+      /*
+        If we're returning from an email confirmation,
+        never automatically open the dashboard.
+      */
+
+      if (
+        emailConfirmationRedirect
+      ) {
+
+        /*
+          Supabase may still process the confirmation
+          session automatically because detectSessionInUrl
+          is enabled.
+
+          The auth-state listener above catches it and
+          returns the user to Login.
+        */
+
+        setAuthMode(
+          "login"
+        );
+
+      } else {
+
+        /*
+          Normal first visit:
+          show Create Account.
+        */
+
+        setAuthMode(
+          "signup"
+        );
+      }
 
       const {
         data: {
           session
         }
       } =
-        await supabaseClient.auth
+        await supabaseClient
+          .auth
           .getSession();
 
+      /*
+        If this is NOT an email-confirmation redirect
+        and there is already a valid session, open
+        the dashboard automatically.
+      */
+
       if (
-        session?.user
+        session?.user &&
+        !emailConfirmationRedirect
       ) {
 
         await loadApp();
       }
 
     })();
+
   </script>
 
 </body>
