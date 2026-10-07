@@ -204,6 +204,43 @@
       padding: 0;
     }
 
+    .resend-box {
+      margin-top: 18px;
+      padding: 15px;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      background: #fafcfb;
+      text-align: center;
+    }
+
+    .resend-box p {
+      margin: 0 0 9px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .resend-btn {
+      border: 0;
+      background: transparent;
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 800;
+      padding: 4px;
+    }
+
+    .resend-btn:hover {
+      color: var(--green-dark);
+      text-decoration: underline;
+    }
+
+    .resend-timer {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
     .message {
       margin: 15px 0;
       padding: 12px 14px;
@@ -807,6 +844,32 @@
         </button>
 
       </form>
+
+      <!-- RESEND CONFIRMATION -->
+      <div
+        id="resendBox"
+        class="resend-box hidden"
+      >
+
+        <p>
+          Didn't receive the confirmation email?
+          Check your spam folder or request a new one.
+        </p>
+
+        <button
+          id="resendEmailBtn"
+          class="resend-btn"
+          type="button"
+        >
+          Resend confirmation email
+        </button>
+
+        <span
+          id="resendTimer"
+          class="resend-timer hidden"
+        ></span>
+
+      </div>
 
       <div class="auth-switch">
 
@@ -1723,21 +1786,15 @@
     let currentPage = "dashboard";
     let currentPaymentOrder = null;
 
-    /*
-      Used to distinguish an email-confirmation redirect
-      from a normal login.
-
-      When Supabase confirms an email, it can establish a
-      temporary session from the confirmation link.
-
-      SellFlow should NOT send that user directly to the
-      dashboard.
-
-      Instead:
-      confirmation → Login → Dashboard after correct login
-    */
-
     let emailConfirmationRedirect = false;
+
+    /*
+      Prevents repeated resend requests.
+
+      The user can resend once every 60 seconds.
+    */
+    let resendCooldown = 0;
+    let resendTimerInterval = null;
 
     const $ = (id) =>
       document.getElementById(id);
@@ -1755,20 +1812,9 @@
             window.location.search
           );
 
-        /*
-          Supabase may return:
-          ?code=...
-        */
-
         if (params.has("code")) {
           return true;
         }
-
-        /*
-          Older implicit-flow links may contain:
-          #access_token=...
-          #type=signup
-        */
 
         const hash =
           window.location.hash || "";
@@ -1938,6 +1984,224 @@
     }
 
     /* ==========================================================
+       RESEND CONFIRMATION EMAIL
+       ========================================================== */
+
+    function showResendBox(
+      show = true
+    ) {
+
+      $("resendBox")
+        .classList
+        .toggle(
+          "hidden",
+          !show
+        );
+    }
+
+    function resetResendCooldown() {
+
+      resendCooldown = 0;
+
+      if (
+        resendTimerInterval
+      ) {
+
+        clearInterval(
+          resendTimerInterval
+        );
+
+        resendTimerInterval =
+          null;
+      }
+
+      $("resendEmailBtn")
+        .disabled =
+        false;
+
+      $("resendEmailBtn")
+        .textContent =
+        "Resend confirmation email";
+
+      $("resendTimer")
+        .classList
+        .add(
+          "hidden"
+        );
+
+      $("resendTimer")
+        .textContent =
+        "";
+    }
+
+    function startResendCooldown() {
+
+      resendCooldown =
+        60;
+
+      $("resendEmailBtn")
+        .disabled =
+        true;
+
+      $("resendEmailBtn")
+        .textContent =
+        "Email sent";
+
+      $("resendTimer")
+        .classList
+        .remove(
+          "hidden"
+        );
+
+      $("resendTimer")
+        .textContent =
+        `You can resend again in ${resendCooldown}s.`;
+
+      if (
+        resendTimerInterval
+      ) {
+
+        clearInterval(
+          resendTimerInterval
+        );
+      }
+
+      resendTimerInterval =
+        setInterval(
+          () => {
+
+            resendCooldown--;
+
+            if (
+              resendCooldown <=
+              0
+            ) {
+
+              resetResendCooldown();
+
+              return;
+            }
+
+            $("resendTimer")
+              .textContent =
+              `You can resend again in ${resendCooldown}s.`;
+
+          },
+          1000
+        );
+    }
+
+    $("resendEmailBtn")
+      .addEventListener(
+        "click",
+        async () => {
+
+          if (
+            resendCooldown >
+            0
+          ) {
+            return;
+          }
+
+          const email =
+            $("email")
+              .value
+              .trim();
+
+          hideMessage(
+            $("authMessage")
+          );
+
+          if (!email) {
+
+            showMessage(
+              $("authMessage"),
+              "Enter your email address first, then tap resend."
+            );
+
+            $("email")
+              .focus();
+
+            return;
+          }
+
+          if (
+            !email.includes("@")
+          ) {
+
+            showMessage(
+              $("authMessage"),
+              "Enter a valid email address."
+            );
+
+            $("email")
+              .focus();
+
+            return;
+          }
+
+          const button =
+            $("resendEmailBtn");
+
+          button.disabled =
+            true;
+
+          button.textContent =
+            "Sending...";
+
+          try {
+
+            const {
+              error
+            } =
+              await supabaseClient
+                .auth
+                .resend({
+                  type: "signup",
+
+                  email,
+
+                  options: {
+                    emailRedirectTo:
+                      SELLFLOW_URL
+                  }
+                });
+
+            if (error) {
+              throw error;
+            }
+
+            showMessage(
+              $("authMessage"),
+              "A new confirmation email has been sent. Check your inbox and spam folder.",
+              "success"
+            );
+
+            startResendCooldown();
+
+          } catch (error) {
+
+            console.error(
+              "Resend confirmation error:",
+              error
+            );
+
+            button.disabled =
+              false;
+
+            button.textContent =
+              "Resend confirmation email";
+
+            showMessage(
+              $("authMessage"),
+              error?.message ||
+                "Unable to resend the confirmation email. Please try again."
+            );
+          }
+        }
+      );
+
+    /* ==========================================================
        AUTH UI
        ========================================================== */
 
@@ -1982,6 +2246,18 @@
         signup
           ? "Log in"
           : "Create account";
+
+      /*
+        Resend is only useful on the login screen.
+      */
+
+      showResendBox(
+        !signup
+      );
+
+      if (signup) {
+        resetResendCooldown();
+      }
 
       hideMessage(
         $("authMessage")
@@ -2121,71 +2397,85 @@
               /*
                 IMPORTANT:
 
-                With email confirmation enabled,
-                Supabase normally returns a user
-                without an active session.
+                Regardless of whether Supabase returns
+                a session or not, SellFlow will always
+                move the seller to Login after signup.
 
-                That means the account exists,
-                but the seller must confirm the
-                email before logging in.
+                This gives us one consistent flow:
+
+                Create account
+                ↓
+                Confirmation email
+                ↓
+                Login
+                ↓
+                Dashboard
               */
 
               if (
                 data?.session
               ) {
 
-                /*
-                  This can happen if email confirmation
-                  is disabled or the provider returns
-                  an active session.
+                try {
 
-                  In that case the account is already
-                  authenticated.
-                */
+                  await supabaseClient
+                    .auth
+                    .signOut();
 
-                await loadApp();
+                } catch (signOutError) {
 
-              } else {
-
-                /*
-                  This is the normal SellFlow path.
-
-                  Create account
-                  ↓
-                  Confirmation email
-                  ↓
-                  Automatically switch to Login
-                */
-
-                setAuthMode(
-                  "login"
-                );
-
-                $("email").value =
-                  email;
-
-                $("password").value =
-                  "";
-
-                showMessage(
-                  $("authMessage"),
-                  "Account created successfully. Check your email and confirm your SellFlow account before logging in.",
-                  "success"
-                );
-
-                /*
-                  Clear signup-only fields.
-                */
-
-                $("fullName").value =
-                  "";
-
-                $("businessName").value =
-                  "";
-
-                $("phone").value =
-                  "";
+                  console.warn(
+                    "Signup session cleanup:",
+                    signOutError
+                  );
+                }
               }
+
+              currentUser =
+                null;
+
+              profile =
+                null;
+
+              orders =
+                [];
+
+              setAuthMode(
+                "login"
+              );
+
+              $("email").value =
+                email;
+
+              $("password").value =
+                "";
+
+              showMessage(
+                $("authMessage"),
+                "Account created successfully. Check your email and confirm your SellFlow account before logging in.",
+                "success"
+              );
+
+              /*
+                Make the resend option immediately available.
+              */
+
+              showResendBox(
+                true
+              );
+
+              /*
+                Clear signup-only fields.
+              */
+
+              $("fullName").value =
+                "";
+
+              $("businessName").value =
+                "";
+
+              $("phone").value =
+                "";
 
               return;
             }
@@ -2236,11 +2526,6 @@
               error?.message ||
               "Authentication failed.";
 
-            /*
-              Make common Supabase email-confirmation
-              errors more useful to the seller.
-            */
-
             if (
               message
                 .toLowerCase()
@@ -2251,6 +2536,10 @@
 
               message =
                 "Please confirm your email before logging in.";
+
+              showResendBox(
+                true
+              );
             }
 
             showMessage(
@@ -4458,12 +4747,19 @@
           /*
             EMAIL CONFIRMATION
 
-            If Supabase created a temporary authenticated
-            session as part of email confirmation, don't
-            send the user to the dashboard.
+            Confirmation link may create a temporary
+            authenticated session.
+
+            SellFlow must NOT send the user to the
+            dashboard from that session.
 
             Instead:
-            confirmation → Login
+
+            Confirmation
+              ↓
+            Login
+              ↓
+            Dashboard
           */
 
           if (
@@ -4475,14 +4771,6 @@
             if (
               emailConfirmationRedirect
             ) {
-
-              /*
-                Remove the temporary session.
-
-                Delay the signOut slightly so we don't
-                interfere with Supabase's internal auth
-                event processing.
-              */
 
               setTimeout(
                 async () => {
@@ -4532,6 +4820,12 @@
                     "success"
                   );
 
+                  $("resendEmailBtn")
+                    .classList
+                    .remove(
+                      "hidden"
+                    );
+
                   clearAuthUrl();
 
                   emailConfirmationRedirect =
@@ -4545,9 +4839,7 @@
             }
 
             /*
-              Normal login:
-
-              Login → Dashboard
+              Normal login.
             */
 
             currentUser =
@@ -4608,22 +4900,14 @@
     (async function boot() {
 
       /*
-        If we're returning from an email confirmation,
-        never automatically open the dashboard.
+        Returning from confirmation:
+        show Login and wait for Supabase to finish
+        processing the confirmation session.
       */
 
       if (
         emailConfirmationRedirect
       ) {
-
-        /*
-          Supabase may still process the confirmation
-          session automatically because detectSessionInUrl
-          is enabled.
-
-          The auth-state listener above catches it and
-          returns the user to Login.
-        */
 
         setAuthMode(
           "login"
@@ -4633,7 +4917,7 @@
 
         /*
           Normal first visit:
-          show Create Account.
+          Create Account.
         */
 
         setAuthMode(
@@ -4651,9 +4935,8 @@
           .getSession();
 
       /*
-        If this is NOT an email-confirmation redirect
-        and there is already a valid session, open
-        the dashboard automatically.
+        Never automatically open the dashboard
+        during the email confirmation flow.
       */
 
       if (
